@@ -6,6 +6,16 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Project_Builder_Development.Models
 {
+
+    public partial class DataContext : DbContext
+    {
+
+        public DataContext() : base("aspnet-Project Builder Development-20190514031314") { }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Skill> Skills { get; set; }
+
+    }
+
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
     {
@@ -24,6 +34,9 @@ namespace Project_Builder_Development.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        public DbSet<Skill> Skills { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
         public static ApplicationDbContext Create()
         {
