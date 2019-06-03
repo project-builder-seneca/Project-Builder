@@ -15,24 +15,29 @@
             {
                 @Html.AntiForgeryToken()
                 <h4>Login to your account here.</h4>
-                <div class="container">
+                <hr />
+                <div class="container" style="height:initial">
                     <div class="row">
                         <div class="Absolute-Center is-Responsive">
-                            <div align="center">
+                            <div class="col-md-12">
                                 <h3>Login</h3>
                             </div>
-                            <div class="col-sm-12">
+                            <div class="col-md-12">
                                 <form action="" id="loginForm">
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    <div class="email-form">
-                                        @Html.LabelFor(m => m.UserId, new { @class = "col-md-2 control-label" })
-                                        @Html.TextBoxFor(m => m.UserId, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.UserId, "", new { @class = "text-danger" })
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" }) 
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.UserId, "UserID", new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-9 col-md-offset-1">
+                                            @Html.TextBoxFor(m => m.UserId, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.UserId, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
-                                    <div class="passwrod-form">
-                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
-                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
-                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    <div class="form-group">
+                                        @Html.LabelFor(m => m.Password, "Password", new { @class = "col-md-2 control-label" })
+                                        <div class="col-md-9 col-md-offset-1">
+                                            @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                        </div>
                                     </div>
                                     <div class="checkbox-form">
                                         <div class="col-md-offset-2 col-md-10">
@@ -46,7 +51,8 @@
                                         <input type="submit" value="Log in" class="btn btn-default" />
                                     </div>
                                     <div class="form-group text-center">
-                                        @*<a href="#">Forgot Password</a>&nbsp;|&nbsp;*@@Html.ActionLink("Register as a new user", "Register")
+                                        @Html.ActionLink("Forgot password?", "ForgotPassword")<br/>
+                                        @Html.ActionLink("New to ProjectBuilder? Sign up!", "Register")
                                     </div>
                                 </form>
                             </div>
@@ -57,9 +63,6 @@
         </section>
     </div>
 </div>
-
-
-
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
