@@ -1,4 +1,5 @@
 ﻿using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNet.Identity;
@@ -6,15 +7,6 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Project_Builder_Development.Models
 {
-
-    public partial class DataContext : DbContext
-    {
-
-        public DataContext() : base("aspnet-Project Builder Development-20190514031314") { }
-        public DbSet<Category> Categories { get; set; }
-        public DbSet<Skill> Skills { get; set; }
-
-    }
 
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit https://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class ApplicationUser : IdentityUser
@@ -31,12 +23,27 @@ namespace Project_Builder_Development.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false)
-        {
-        }
+            : base("DefaultConnection", throwIfV1Schema: false){        }
 
-        public DbSet<Skill> Skills { get; set; }
-        public DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Skill> Skills { get; set; }
+        public virtual DbSet<Category> Categories{ get; set; }
+        public virtual DbSet<Idea> Ideas { get; set; }
+
+        // Turn OFF cascade delete, which is (unfortunately) the default setting
+        // for Code First generated databases
+        // For most apps, we do NOT want automatic cascade delete behaviour
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            // First, call the base OnModelCreating method,
+            // which uses the existing class definitions and conventions
+
+            base.OnModelCreating(modelBuilder);
+
+            // Then, turn off "cascade delete" for 
+            // all default convention-based associations
+
+            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
+        }
 
         public static ApplicationDbContext Create()
         {

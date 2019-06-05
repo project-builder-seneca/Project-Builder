@@ -192,33 +192,18 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905260138378_InitialCreate.cs" />
-    <Compile Include="Migrations\201905260138378_InitialCreate.Designer.cs">
-      <DependentUpon>201905260138378_InitialCreate.cs</DependentUpon>
+    <Compile Include="Migrations\201906051841212_initial.cs" />
+    <Compile Include="Migrations\201906051841212_initial.Designer.cs">
+      <DependentUpon>201906051841212_initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905261835332_adding_userId_field_in_register.cs" />
-    <Compile Include="Migrations\201905261835332_adding_userId_field_in_register.Designer.cs">
-      <DependentUpon>201905261835332_adding_userId_field_in_register.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905261838055_adding_userId_field_in_register1.cs" />
-    <Compile Include="Migrations\201905261838055_adding_userId_field_in_register1.Designer.cs">
-      <DependentUpon>201905261838055_adding_userId_field_in_register1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905261846324_Register_form_complete.cs" />
-    <Compile Include="Migrations\201905261846324_Register_form_complete.Designer.cs">
-      <DependentUpon>201905261846324_Register_form_complete.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905261913207_Change_login_names.cs" />
-    <Compile Include="Migrations\201905261913207_Change_login_names.Designer.cs">
-      <DependentUpon>201905261913207_Change_login_names.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906031706086_Skill-Category-table-added.cs" />
-    <Compile Include="Migrations\201906031706086_Skill-Category-table-added.Designer.cs">
-      <DependentUpon>201906031706086_Skill-Category-table-added.cs</DependentUpon>
+    <Compile Include="Migrations\201906051955256_Added-Idea-class.cs" />
+    <Compile Include="Migrations\201906051955256_Added-Idea-class.Designer.cs">
+      <DependentUpon>201906051955256_Added-Idea-class.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DesignViewModels.cs" />
+    <Compile Include="Models\IdeaBaseViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SkillCategoryBaseViewModel.cs" />
@@ -307,23 +292,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905260138378_InitialCreate.resx">
-      <DependentUpon>201905260138378_InitialCreate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906051841212_initial.resx">
+      <DependentUpon>201906051841212_initial.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905261835332_adding_userId_field_in_register.resx">
-      <DependentUpon>201905261835332_adding_userId_field_in_register.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905261838055_adding_userId_field_in_register1.resx">
-      <DependentUpon>201905261838055_adding_userId_field_in_register1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905261846324_Register_form_complete.resx">
-      <DependentUpon>201905261846324_Register_form_complete.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905261913207_Change_login_names.resx">
-      <DependentUpon>201905261913207_Change_login_names.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906031706086_Skill-Category-table-added.resx">
-      <DependentUpon>201906031706086_Skill-Category-table-added.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906051955256_Added-Idea-class.resx">
+      <DependentUpon>201906051955256_Added-Idea-class.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

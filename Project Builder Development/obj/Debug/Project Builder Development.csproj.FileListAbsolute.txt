@@ -214,17 +214,10 @@ C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Developmen
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.csprojAssemblyReference.cache
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.InitialCreate.resources
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.adding_userId_field_in_register.resources
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.adding_userId_field_in_register1.resources
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Register_form_complete.resources
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Change_login_names.resources
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.csproj.GenerateResource.cache
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.csproj.CoreCompileInputs.cache
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.csproj.CopyComplete
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.dll
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.pdb
-C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.SkillCategorytableadded.resources
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\AutoMapper.dll
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\SendGrid.dll
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\System.Net.Http.dll
@@ -236,3 +229,6 @@ C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Developmen
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\AutoMapper.xml
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\SendGrid.pdb
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\bin\SendGrid.xml
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.initial.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.csproj.GenerateResource.cache
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.AddedIdeaclass.resources

@@ -10,7 +10,7 @@ namespace Project_Builder_Development.Controllers
     public class Manager
     {
         // Reference to the data context
-        private DataContext ds = new DataContext();
+        private ApplicationDbContext ds = new ApplicationDbContext();
 
         // AutoMapper instance
         public IMapper mapper;
