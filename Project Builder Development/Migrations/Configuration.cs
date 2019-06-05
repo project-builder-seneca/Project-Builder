@@ -10,7 +10,6 @@ namespace Project_Builder_Development.Migrations
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
-            ContextKey = "Project_Builder_Development.Models.ApplicationDbContext";
         }
 
         protected override void Seed(Project_Builder_Development.Models.ApplicationDbContext context)
