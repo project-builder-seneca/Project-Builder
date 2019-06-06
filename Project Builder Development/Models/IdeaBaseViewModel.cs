@@ -7,6 +7,6 @@ namespace Project_Builder_Development.Models
 {
     public class IdeaBaseViewModel
     {
-
+        
     }
 }
