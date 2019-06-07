@@ -8,6 +8,11 @@ namespace Project_Builder_Development.Models
 {
     public class Idea {
 
+        public Idea() {
+            PatSkills = new List<Skill>();
+            VolSkills = new List<Skill>();
+        }
+
         [Required]
         [Display(Name = "Idea ID")]
         public int IdeaId { get; set; }

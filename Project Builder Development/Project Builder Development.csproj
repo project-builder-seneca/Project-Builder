@@ -229,6 +229,10 @@
     <Compile Include="Migrations\201906070139118_Idea_Class_Change_5.Designer.cs">
       <DependentUpon>201906070139118_Idea_Class_Change_5.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906070212256_details_Idea.cs" />
+    <Compile Include="Migrations\201906070212256_details_Idea.Designer.cs">
+      <DependentUpon>201906070212256_details_Idea.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DesignViewModels.cs" />
@@ -359,6 +363,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906070139118_Idea_Class_Change_5.resx">
       <DependentUpon>201906070139118_Idea_Class_Change_5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906070212256_details_Idea.resx">
+      <DependentUpon>201906070212256_details_Idea.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

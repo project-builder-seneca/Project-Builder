@@ -360,3 +360,4 @@ C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Developmen
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_3.resources
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_4.resources
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_5.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.details_Idea.resources
