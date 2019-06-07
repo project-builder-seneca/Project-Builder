@@ -21,7 +21,7 @@ namespace Project_Builder_Development.Controllers
         [AllowAnonymous]
         public ActionResult Category()
         {
-            return View(m.GettAllCategories());
+            return View(m.GetAllCategories());
         }
 
         // GET: SkillCategory/Details/5

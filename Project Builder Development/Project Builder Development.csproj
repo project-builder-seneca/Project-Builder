@@ -186,6 +186,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IdeaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Manager.cs" />
     <Compile Include="Controllers\SkillCategoryController.cs" />
@@ -200,6 +201,34 @@
     <Compile Include="Migrations\201906051955256_Added-Idea-class.Designer.cs">
       <DependentUpon>201906051955256_Added-Idea-class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906061726097_Change-Idea_Field_IEnum_to_Icollection.cs" />
+    <Compile Include="Migrations\201906061726097_Change-Idea_Field_IEnum_to_Icollection.Designer.cs">
+      <DependentUpon>201906061726097_Change-Idea_Field_IEnum_to_Icollection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906062013051_Idea_Class_Change.cs" />
+    <Compile Include="Migrations\201906062013051_Idea_Class_Change.Designer.cs">
+      <DependentUpon>201906062013051_Idea_Class_Change.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906062031049_Idea_Class_Change_1.cs" />
+    <Compile Include="Migrations\201906062031049_Idea_Class_Change_1.Designer.cs">
+      <DependentUpon>201906062031049_Idea_Class_Change_1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906062054321_Idea_Class_Change_2.cs" />
+    <Compile Include="Migrations\201906062054321_Idea_Class_Change_2.Designer.cs">
+      <DependentUpon>201906062054321_Idea_Class_Change_2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906062120250_Idea_Class_Change_3.cs" />
+    <Compile Include="Migrations\201906062120250_Idea_Class_Change_3.Designer.cs">
+      <DependentUpon>201906062120250_Idea_Class_Change_3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906062217537_Idea_Class_Change_4.cs" />
+    <Compile Include="Migrations\201906062217537_Idea_Class_Change_4.Designer.cs">
+      <DependentUpon>201906062217537_Idea_Class_Change_4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906070139118_Idea_Class_Change_5.cs" />
+    <Compile Include="Migrations\201906070139118_Idea_Class_Change_5.Designer.cs">
+      <DependentUpon>201906070139118_Idea_Class_Change_5.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\DesignViewModels.cs" />
@@ -208,6 +237,11 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\SkillCategoryBaseViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -222,6 +256,10 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Project-Builder - Web Deploy.pubxml" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
@@ -276,6 +314,9 @@
     <Content Include="Views\SkillCategory\CategoriesDetails.cshtml" />
     <Content Include="Views\SkillCategory\AddSkill.cshtml" />
     <Content Include="Views\SkillCategory\AddCategory.cshtml" />
+    <Content Include="Views\Idea\Ideas.cshtml" />
+    <Content Include="Views\Idea\IdeaDetails.cshtml" />
+    <Content Include="Views\Idea\AddIdea.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -297,6 +338,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906051955256_Added-Idea-class.resx">
       <DependentUpon>201906051955256_Added-Idea-class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061726097_Change-Idea_Field_IEnum_to_Icollection.resx">
+      <DependentUpon>201906061726097_Change-Idea_Field_IEnum_to_Icollection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906062013051_Idea_Class_Change.resx">
+      <DependentUpon>201906062013051_Idea_Class_Change.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906062031049_Idea_Class_Change_1.resx">
+      <DependentUpon>201906062031049_Idea_Class_Change_1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906062054321_Idea_Class_Change_2.resx">
+      <DependentUpon>201906062054321_Idea_Class_Change_2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906062120250_Idea_Class_Change_3.resx">
+      <DependentUpon>201906062120250_Idea_Class_Change_3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906062217537_Idea_Class_Change_4.resx">
+      <DependentUpon>201906062217537_Idea_Class_Change_4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906070139118_Idea_Class_Change_5.resx">
+      <DependentUpon>201906070139118_Idea_Class_Change_5.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

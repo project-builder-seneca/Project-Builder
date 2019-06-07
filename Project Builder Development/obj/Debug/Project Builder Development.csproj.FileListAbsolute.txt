@@ -353,3 +353,10 @@ C:\Users\Eunhee\Desktop\PRJ666-ProjectBuilder\Project-Builder\Project Builder De
 C:\Users\Eunhee\Desktop\PRJ666-ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.csproj.CopyComplete
 C:\Users\Eunhee\Desktop\PRJ666-ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.dll
 C:\Users\Eunhee\Desktop\PRJ666-ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project Builder Development.pdb
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.ChangeIdea_Field_IEnum_to_Icollection.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_1.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_2.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_3.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_4.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Debug\Project_Builder_Development.Migrations.Idea_Class_Change_5.resources

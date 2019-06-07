@@ -37,6 +37,11 @@ namespace Project_Builder_Development.Controllers
                 cfg.CreateMap<Skill,SkillBaseViewModel>();
                 cfg.CreateMap<SkillAddViewModel, Skill>();
 
+                //Idea Maps
+                cfg.CreateMap<Idea, IdeaBaseViewModel>();
+                cfg.CreateMap<IdeaFormViewModel, IdeaAddViewModel>();
+                cfg.CreateMap<IdeaAddViewModel, Idea>();
+
             });
 
             mapper = config.CreateMapper();
@@ -53,7 +58,7 @@ namespace Project_Builder_Development.Controllers
 
         // Idea Functions...
 
-        /*public IEnumerable<IdeaBaseViewModel> GetAllIdeas()
+        public IEnumerable<IdeaBaseViewModel> GetAllIdeas()
         {
             return mapper.Map<IEnumerable<Idea>, IEnumerable<IdeaBaseViewModel>>(ds.Ideas);
         }
@@ -64,17 +69,33 @@ namespace Project_Builder_Development.Controllers
             return obj == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(obj);
         }
 
-        public IdeaBaseViewModel IdeaAdd(IdeaAddViewModel newIdea)
+        public IdeaBaseViewModel AddIdea(IdeaAddViewModel newIdea)
         {
-            var addedIdea = ds.Ideas.Add(mapper.Map<IdeaAddViewModel, Idea>(newIdea));
+            var category = ds.Categories.Find(newIdea.CategoryId);
+
+            var addedIdea = ds.Ideas.Add(mapper.Map<IdeaAddViewModel,Idea>(newIdea));
+
+            foreach (var id in newIdea.PatSkillIds) {
+                var skill = ds.Skills.Find(id);
+                addedIdea.PatSkills.Add(skill);
+            }
+
+            foreach (var id in newIdea.VolSkillIds) {
+                var skill = ds.Skills.Find(id);
+                addedIdea.VolSkills.Add(skill);
+            }
+
+            addedIdea.Category = category;
+
             ds.SaveChanges();
 
+
             return addedIdea == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(addedIdea);
-        }*/
+        }
 
         // Category Functions
 
-        public IEnumerable<CategoryBaseViewModel> GettAllCategories()
+        public IEnumerable<CategoryBaseViewModel> GetAllCategories()
         {
             return mapper.Map<IEnumerable<Category>, IEnumerable<CategoryBaseViewModel>>(ds.Categories);
         }
