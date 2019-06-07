@@ -65,7 +65,7 @@ namespace Project_Builder_Development.Controllers
 
         public IdeaBaseViewModel GetOneIdea(int? id)
         {
-            var obj = ds.Ideas.SingleOrDefault(i => id == i.IdeaId);
+            var obj = ds.Ideas.Include("VolSkills").Include("PatSkills").Include("Category").SingleOrDefault(i => id == i.IdeaId);
             return obj == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(obj);
         }
 

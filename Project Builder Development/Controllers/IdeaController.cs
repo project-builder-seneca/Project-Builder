@@ -19,7 +19,7 @@ namespace Project_Builder_Development.Controllers
         // GET: Idea/Details/5
         public ActionResult IdeaDetails(int? id)
         {
-            return View();
+            return View(m.GetOneIdea(id));
         }
 
         // GET: Idea/Create

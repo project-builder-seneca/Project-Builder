@@ -41,13 +41,13 @@ namespace Project_Builder_Development.Models
 
         [Display(Name = "Skills Required for Partners: ")]
         [StringLength(25, ErrorMessage = "Please Choose from the provided list!", MinimumLength = 2)]
-        public ICollection<Skill> PatSkills { get; set; }
+        public IEnumerable<SkillBaseViewModel> PatSkills { get; set; }
 
         [Display(Name = "Volunteers Required: ")]
         public int VolunteersRequired { get; set; }
 
         [Display(Name = "Skills required for Volunteers: ")]
-        public ICollection<Skill> VolSkills { get; set; }
+        public IEnumerable<SkillBaseViewModel> VolSkills { get; set; }
     }
 
     public class IdeaFormViewModel : IdeaBaseViewModel{
