@@ -13,6 +13,14 @@ namespace Project_Builder_Development.Models
         public int IdeaId { get; set; }
 
         [Required]
+        [Display(Name = "Owner")]
+        public String Owner { get; set; }
+
+        [Required]
+        [Display(Name = "Category")]
+        public Category Category { get; set; }
+
+        [Required]
         [Display(Name = "Title")]
         [StringLength(100, ErrorMessage = "Title cannot exceed more than {0} words", MinimumLength = 2)]
         public string Title { get; set; }
@@ -30,30 +38,32 @@ namespace Project_Builder_Development.Models
         public int PartnersRequired { get; set; }
 
         [Display(Name = "Skills Required for Partners: ")]
-        [StringLength(25, ErrorMessage = "Please Choose from the provided list!", MinimumLength = 2)]
-        public IEnumerable<SkillBaseViewModel> PatSkills { get; set; }
+        public ICollection<Skill> PatSkills { get; set; }
 
         [Display(Name = "Volunteers Required: ")]
         public int VolunteersRequired { get; set; }
 
         [Display(Name = "Skills required for Volunteers: ")]
-        public IEnumerable<SkillBaseViewModel> VolSkills { get; set; }
+        public ICollection<Skill> VolSkills { get; set; }
 
     }
 
     public class Category
     {
+
         [Required]
         [Display(Name = "Category Id: ")]
         public int CategoryId { get; set; }
 
         [Required]
         [Display(Name = "Category Name: ")]
-        public string Name { get; set; }
+        public String Name { get; set; }
+
     }
 
     public class Skill
     {
+
         [Required]
         [Display(Name = "Skill Id: ")]
         public int SkillId { get; set; }
@@ -62,5 +72,6 @@ namespace Project_Builder_Development.Models
         [StringLength(25, MinimumLength = 2)]
         [Display(Name = "Skill Name: ")]
         public string Name { get; set; }
+
     }
 }

@@ -1,0 +1,101 @@
+﻿@model Project_Builder_Development.Models.IdeaBaseViewModel
+
+@{
+    ViewBag.Title = "IdeaDetails";
+}
+
+<h2>Idea Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IdeaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdeaId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Owner)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Owner)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InvestmentGoal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InvestmentGoal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PartnersRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PartnersRequired)
+        </dd>
+
+        <dt>
+            Skills looking in Partners:
+        </dt>
+        <dd>
+            @foreach (var items in @Model.PatSkills)
+            {
+                <p>@items.Name</p>
+            }
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.VolunteersRequired)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.VolunteersRequired)
+        </dd>
+
+        <dt>
+            Skills looking in Volunteers:
+        </dt>
+        <dd>
+            @foreach (var items in @Model.VolSkills)
+            {
+                <p>@items.Name</p>
+            }
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
+    @Html.ActionLink("Back to List", "Ideas")
+</p>

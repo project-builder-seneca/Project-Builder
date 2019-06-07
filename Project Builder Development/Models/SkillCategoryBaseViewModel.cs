@@ -8,6 +8,7 @@ namespace Project_Builder_Development.Models
 {
     public class SkillBaseViewModel
     {
+
         [Required]
         [Display(Name = "Skill Id: ")]
         public int SkillId { get; set; }
@@ -16,6 +17,7 @@ namespace Project_Builder_Development.Models
         [StringLength(25, MinimumLength = 2)]
         [Display(Name = "Skill Name: ")]
         public string Name { get; set; }
+
     }
 
     public class SkillAddViewModel : SkillBaseViewModel
