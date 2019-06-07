@@ -99,7 +99,7 @@ namespace Project_Builder_Development.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("../SkillCategory/Categories/Details", new { id = addedCategory.CategoryId});
+                    return RedirectToAction("../SkillCategory/CategoriesDetails", new { id = addedCategory.CategoryId});
                 }
             }
             catch
