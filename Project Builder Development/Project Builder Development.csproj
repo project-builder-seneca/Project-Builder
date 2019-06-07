@@ -193,45 +193,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906051841212_initial.cs" />
-    <Compile Include="Migrations\201906051841212_initial.Designer.cs">
-      <DependentUpon>201906051841212_initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906051955256_Added-Idea-class.cs" />
-    <Compile Include="Migrations\201906051955256_Added-Idea-class.Designer.cs">
-      <DependentUpon>201906051955256_Added-Idea-class.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906061726097_Change-Idea_Field_IEnum_to_Icollection.cs" />
-    <Compile Include="Migrations\201906061726097_Change-Idea_Field_IEnum_to_Icollection.Designer.cs">
-      <DependentUpon>201906061726097_Change-Idea_Field_IEnum_to_Icollection.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906062013051_Idea_Class_Change.cs" />
-    <Compile Include="Migrations\201906062013051_Idea_Class_Change.Designer.cs">
-      <DependentUpon>201906062013051_Idea_Class_Change.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906062031049_Idea_Class_Change_1.cs" />
-    <Compile Include="Migrations\201906062031049_Idea_Class_Change_1.Designer.cs">
-      <DependentUpon>201906062031049_Idea_Class_Change_1.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906062054321_Idea_Class_Change_2.cs" />
-    <Compile Include="Migrations\201906062054321_Idea_Class_Change_2.Designer.cs">
-      <DependentUpon>201906062054321_Idea_Class_Change_2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906062120250_Idea_Class_Change_3.cs" />
-    <Compile Include="Migrations\201906062120250_Idea_Class_Change_3.Designer.cs">
-      <DependentUpon>201906062120250_Idea_Class_Change_3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906062217537_Idea_Class_Change_4.cs" />
-    <Compile Include="Migrations\201906062217537_Idea_Class_Change_4.Designer.cs">
-      <DependentUpon>201906062217537_Idea_Class_Change_4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906070139118_Idea_Class_Change_5.cs" />
-    <Compile Include="Migrations\201906070139118_Idea_Class_Change_5.Designer.cs">
-      <DependentUpon>201906070139118_Idea_Class_Change_5.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906070212256_details_Idea.cs" />
-    <Compile Include="Migrations\201906070212256_details_Idea.Designer.cs">
-      <DependentUpon>201906070212256_details_Idea.cs</DependentUpon>
+    <Compile Include="Migrations\201906070330541_initial.cs" />
+    <Compile Include="Migrations\201906070330541_initial.Designer.cs">
+      <DependentUpon>201906070330541_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -337,35 +301,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906051841212_initial.resx">
-      <DependentUpon>201906051841212_initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906051955256_Added-Idea-class.resx">
-      <DependentUpon>201906051955256_Added-Idea-class.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906061726097_Change-Idea_Field_IEnum_to_Icollection.resx">
-      <DependentUpon>201906061726097_Change-Idea_Field_IEnum_to_Icollection.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906062013051_Idea_Class_Change.resx">
-      <DependentUpon>201906062013051_Idea_Class_Change.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906062031049_Idea_Class_Change_1.resx">
-      <DependentUpon>201906062031049_Idea_Class_Change_1.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906062054321_Idea_Class_Change_2.resx">
-      <DependentUpon>201906062054321_Idea_Class_Change_2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906062120250_Idea_Class_Change_3.resx">
-      <DependentUpon>201906062120250_Idea_Class_Change_3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906062217537_Idea_Class_Change_4.resx">
-      <DependentUpon>201906062217537_Idea_Class_Change_4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906070139118_Idea_Class_Change_5.resx">
-      <DependentUpon>201906070139118_Idea_Class_Change_5.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906070212256_details_Idea.resx">
-      <DependentUpon>201906070212256_details_Idea.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906070330541_initial.resx">
+      <DependentUpon>201906070330541_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Project_Builder_Development.Models.IdeaBaseViewModel>
+
+@{
+    ViewBag.Title = "Ideas";
+}
+
+<h2>Ideas</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddIdea")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.IdeaId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InvestmentGoal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PartnersRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.VolunteersRequired)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.IdeaId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InvestmentGoal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PartnersRequired)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.VolunteersRequired)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+            @Html.ActionLink("Details", "IdeaDetails", new { id=item.IdeaId }) |
+            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+        </td>
+    </tr>
+}
+
+</table>

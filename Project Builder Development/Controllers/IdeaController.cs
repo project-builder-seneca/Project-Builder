@@ -11,6 +11,7 @@ namespace Project_Builder_Development.Controllers
     {
         Manager m = new Manager();
         // GET: Idea
+        
         public ActionResult Ideas()
         {
             return View(m.GetAllIdeas());
