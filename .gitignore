@@ -3,3 +3,14 @@
 ################################################################################
 
 /.vs/Project Builder Development/v16/Server/sqlite3/db.lock
+Project Builder Development/App_Data/DefaultDatabase.mdf
+Project Builder Development/App_Data/DefaultDatabase_log.ldf
+Project Builder Development/bin/Project Builder Development.dll
+Project Builder Development/bin/Project Builder Development.pdb
+Project Builder Development/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
+Project Builder Development/obj/Debug/Project Builder Development.csproj.CoreCompileInputs.cache
+Project Builder Development/obj/Debug/Project Builder Development.csproj.FileListAbsolute.txt
+Project Builder Development/obj/Debug/Project Builder Development.csproj.GenerateResource.cache
+Project Builder Development/obj/Debug/Project Builder Development.csprojAssemblyReference.cache
+Project Builder Development/obj/Debug/Project Builder Development.dll
+Project Builder Development/obj/Debug/Project Builder Development.pdb
