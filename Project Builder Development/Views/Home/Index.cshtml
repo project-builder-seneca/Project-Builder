@@ -18,13 +18,13 @@
             {
                 <a href="javascript:document.getElementById('logoutForm').submit()">Logout</a>
             }
-        }
+
 
         <dl class="dl-horizontal">
             <dt>Password:</dt>
             <dd>
                 [
-                @if (HttpContext.Current.User.Identity.Name != null)
+                @if (User.Identity.Name != null)
                 {
                     @Html.ActionLink("Change your password", "ChangePassword", "User")
                 }
@@ -35,5 +35,6 @@
                 ]
             </dd>
         </dl>
+        }
     </div>
 </div>

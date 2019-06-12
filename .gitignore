@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/Project Builder Development/obj/Debug/edmxResourcesToEmbed/Models
+/.vs/config/applicationhost.config 
+/Project Builder Development/App_Data/DefaultDatabase.mdf 
+/Project Builder Development/App_Data/DefaultDatabase_log.ldf 
