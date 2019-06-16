@@ -23,12 +23,11 @@ namespace Project_Builder_Development.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("DefaultConnection", throwIfV1Schema: false) { }
+            : base("DefaultConnection", throwIfV1Schema: false){        }
 
         public virtual DbSet<Skill> Skills { get; set; }
-        public virtual DbSet<Category> Categories { get; set; }
+        public virtual DbSet<Category> Categories{ get; set; }
         public virtual DbSet<Idea> Ideas { get; set; }
-        //public virtual DbSet<User> Users { get; set; }
 
         // Turn OFF cascade delete, which is (unfortunately) the default setting
         // for Code First generated databases
