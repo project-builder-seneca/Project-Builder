@@ -23,8 +23,10 @@
                 <ul class="nav navbar-nav">
                     <!--<li>@Html.ActionLink("About", "About", "Home")</li>-->
                     <li>@Html.ActionLink("Ideas","Ideas","Idea")</li>
-                    <li>@Html.ActionLink("Skills","Skill","SkillCategory")</li>
-                    <li>@Html.ActionLink("Categories","Category","SkillCategory")</li>
+                    @if(this.User.IsInRole("Admin")) { 
+                        <li>@Html.ActionLink("Skills","Skill","SkillCategory")</li>
+                        <li>@Html.ActionLink("Categories","Category","SkillCategory")</li>
+                    }
                 </ul>
                 @Html.Partial("_LoginPartial")
             </div>

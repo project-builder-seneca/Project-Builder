@@ -231,3 +231,4 @@ C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Developmen
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.dll
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.pdb
 C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.initial.resources
+C:\Users\owner\Desktop\ProjectBuilder\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedRoleClaimClass.resources

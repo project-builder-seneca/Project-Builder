@@ -1,10 +1,10 @@
-﻿@model Project_Builder_Development.Models.RegisterViewModel
+﻿@model Project_Builder_Development.Models.RegisterFormViewModel
 
 @{
     ViewBag.Title = "Register";
 }
 
-<h2>Please Register</h2>
+<h2>Register</h2>
 
 
 @using (Html.BeginForm()) 
@@ -32,18 +32,18 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.UserId, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
         @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        <strong><div class="control-label col-md-2">Username: </div></strong>
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
         </div>
     </div>
 
@@ -64,16 +64,28 @@
     </div>
 
     <div class="form-group">
+            <div class = "col-md-2 control-label"><strong>Roles: (Please choose <span style="background-color:yellow">User</span> in all cases!)</strong></div>
+            <div class="col-md-10">
+                @{
+                    foreach (var item in Model.RoleList)
+                    {
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="Roles" value="@item.Text" />@item.Text
+                            </label>
+                        </div>
+                    }
+                }
+            </div>
+        </div>
+
+    <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Create" class="btn btn-default" />
         </div>
     </div>
 </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+                }
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

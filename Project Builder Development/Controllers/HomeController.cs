@@ -8,8 +8,11 @@ namespace Project_Builder_Development.Controllers
 {
     public class HomeController : Controller
     {
+        Manager m = new Manager();
+
         public ActionResult Index()
         {
+            m.LoadData();
             return View();
         }
 

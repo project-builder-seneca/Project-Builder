@@ -9,6 +9,7 @@ namespace Project_Builder_Development.Controllers
 {
     public class IdeaController : Controller
     {
+        public int IdeaId = 1;
         Manager m = new Manager();
         // GET: Idea
         
@@ -32,6 +33,7 @@ namespace Project_Builder_Development.Controllers
             obj.CategoryList = new SelectList(m.GetAllCategories(), dataValueField: "CategoryId", dataTextField: "Name");
 
             obj.Owner = HttpContext.User.Identity.Name;
+            obj.IdeaId = IdeaId++;
 
             return View(obj);
         }

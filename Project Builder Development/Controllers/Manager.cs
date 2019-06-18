@@ -9,6 +9,7 @@ namespace Project_Builder_Development.Controllers
 {
     public class Manager
     {
+        public int RoleId = 0;
         // Reference to the data context
         private ApplicationDbContext ds = new ApplicationDbContext();
 
@@ -41,6 +42,10 @@ namespace Project_Builder_Development.Controllers
                 cfg.CreateMap<Idea, IdeaBaseViewModel>();
                 cfg.CreateMap<IdeaFormViewModel, IdeaAddViewModel>();
                 cfg.CreateMap<IdeaAddViewModel, Idea>();
+
+                //Register
+                cfg.CreateMap<RegisterViewModel, RegisterFormViewModel>();
+                cfg.CreateMap<RegisterFormViewModel, RegisterViewModel>();
 
             });
 
@@ -131,6 +136,36 @@ namespace Project_Builder_Development.Controllers
             ds.SaveChanges();
 
             return addedSkill == null ? null : mapper.Map<Skill, SkillBaseViewModel>(addedSkill);
+        }
+
+        // Get RoleClaims to string
+
+        public List<string> RoleClaimGetAllStrings()
+        {
+            return ds.RoleClaims.OrderBy(r => r.Name).Select(r => r.Name).ToList();
+        }
+
+
+
+        public void LoadData() {
+
+            // Roles Table;
+
+            if(ds.RoleClaims.Count() == 0) { 
+                var admin = new RoleClaim();
+                admin.Id = RoleId++;
+                admin.Name = "Admin";
+
+                var user = new RoleClaim();
+                user.Id = RoleId++;
+                user.Name = "User";
+
+                ds.RoleClaims.Add(mapper.Map<RoleClaim>(admin));
+                ds.RoleClaims.Add(mapper.Map<RoleClaim>(user));
+
+                ds.SaveChanges();
+            }
+            // Roles added - END of Roles 
         }
     }
 }
