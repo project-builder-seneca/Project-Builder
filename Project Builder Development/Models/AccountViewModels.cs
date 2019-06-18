@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Web.Mvc;
 
 namespace Project_Builder_Development.Models
 {
@@ -76,7 +77,7 @@ namespace Project_Builder_Development.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         [Required]
@@ -94,6 +95,49 @@ namespace Project_Builder_Development.Models
         [StringLength(100, ErrorMessage = "Email address must be atleast {2} characters long.", MinimumLength = 3)]
         [Display(Name = "Email Address")]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Roles: ")]
+        public IEnumerable<string> Roles { get; set; }  
+    }
+
+    public class RegisterFormViewModel {
+
+        [Required]
+        [StringLength(25, ErrorMessage = "UserId must be {2} to {0} characters long.", MinimumLength = 3)]
+        [Display(Name = "UserId")]
+        [Index(IsUnique = true)]
+        public string UserId { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "Password must be {2} to {0} characters long.", MinimumLength = 6)]
+        [DataType(DataType.Password)]
+        [Display(Name = "Password")]
+        public string Password { get; set; }
+
+        [DataType(DataType.Password)]
+        [Display(Name = "Confirm password")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        public string ConfirmPassword { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "First Name must be {2} to {0} characters long.", MinimumLength = 2)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "Last Name must be atleast {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+
+        [Required]
+        [EmailAddress]
+        [StringLength(100, ErrorMessage = "Email address must be atleast {2} characters long.", MinimumLength = 3)]
+        [Display(Name = "Email Address")]
+        public string Email { get; set; }
+
+        [Required]
+        public MultiSelectList RoleList { get; set; }
     }
 
     public class ResetPasswordViewModel
@@ -111,7 +155,7 @@ namespace Project_Builder_Development.Models
 
         [DataType(DataType.Password)]
         [Display(Name = "Confirm password")]
-        [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+        [System.ComponentModel.DataAnnotations.Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
         public string ConfirmPassword { get; set; }
 
         public string Code { get; set; }

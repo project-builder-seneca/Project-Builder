@@ -28,6 +28,7 @@ namespace Project_Builder_Development.Models
         public virtual DbSet<Skill> Skills { get; set; }
         public virtual DbSet<Category> Categories{ get; set; }
         public virtual DbSet<Idea> Ideas { get; set; }
+        public virtual DbSet<RoleClaim> RoleClaims { get; set; }
 
         // Turn OFF cascade delete, which is (unfortunately) the default setting
         // for Code First generated databases

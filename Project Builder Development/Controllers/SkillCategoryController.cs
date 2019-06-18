@@ -9,44 +9,48 @@ namespace Project_Builder_Development.Controllers
 {
     public class SkillCategoryController : Controller
     {
-
+        public int skillId = 1;
+        public int categoryId = 1;
         Manager m = new Manager();
         // GET: SkillCategory
-        [AllowAnonymous]
+
+        [Authorize(Roles = "Admin")]
         public ActionResult Skill()
         {
             return View(m.GetAllSkills());
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult Category()
         {
             return View(m.GetAllCategories());
         }
 
         // GET: SkillCategory/Details/5
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult SkillsDetails(int? id)
         {
             return View(m.GetOneSkill(id));
         }
 
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult CategoriesDetails(int? id)
         {
             return View(m.GetOneCategory(id));
         }
 
         // GET: SkillCategory/Create
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddSkill()
         {
-            return View();
+            var obj = new SkillAddViewModel();
+            obj.SkillId = skillId++;
+            return View(obj);
         }
 
         // POST: SkillCategory/Create
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddSkill(SkillAddViewModel newSkill)
         {
             try
@@ -73,15 +77,17 @@ namespace Project_Builder_Development.Controllers
         }
 
         // GET: SkillCategory/Create
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddCategory()
         {
-            return View();
+            var obj = new CategoryAddViewModel();
+            obj.CategoryId = categoryId++;
+            return View(obj);
         }
 
         // POST: SkillCategory/Create
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "Admin")]
         public ActionResult AddCategory(CategoryAddViewModel newCategory)
         {
             try
@@ -109,6 +115,7 @@ namespace Project_Builder_Development.Controllers
         }
 
         // GET: SkillCategory/Edit/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -116,6 +123,7 @@ namespace Project_Builder_Development.Controllers
 
         // POST: SkillCategory/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -131,6 +139,7 @@ namespace Project_Builder_Development.Controllers
         }
 
         // GET: SkillCategory/Delete/5
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             return View();
@@ -138,6 +147,7 @@ namespace Project_Builder_Development.Controllers
 
         // POST: SkillCategory/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

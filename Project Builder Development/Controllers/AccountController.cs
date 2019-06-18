@@ -15,6 +15,9 @@ namespace Project_Builder_Development.Controllers
     [Authorize]
     public class AccountController : Controller
     {
+
+        Manager m = new Manager();
+
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -139,7 +142,11 @@ namespace Project_Builder_Development.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            return View();
+            m.LoadData();
+            var Roles = m.RoleClaimGetAllStrings();
+            var form = new RegisterFormViewModel();
+            form.RoleList = new MultiSelectList(Roles);
+            return View(form);
         }
 
         //
@@ -149,19 +156,30 @@ namespace Project_Builder_Development.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
             {
                 var user = new ApplicationUser { UserName = model.UserId, Email = model.Email };
                 var result = await UserManager.CreateAsync(user, model.Password);
+
                 if (result.Succeeded)
                 {
-                    await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
-                    
+
                     // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
                     // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //Add Claims
+
+                    await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Email, model.Email));
+                    await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, "User"));
+
+                    foreach (var role in model.Roles)
+                    {
+                        await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, role.Trim()));
+                    }
+
+                    await SignInManager.SignInAsync(user, isPersistent: true, rememberBrowser: true);
 
                     return RedirectToAction("Index", "Home");
                 }
