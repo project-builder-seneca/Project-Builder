@@ -9,11 +9,6 @@
     @Html.AntiForgeryToken()
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="row">
-        <div class="column left">
-            @*<img src="../../Images/laptop-3190194_1280.jpg" alt="">*@
-        </div>
-
         <div class="column right">
             <div class="form-group">
                 @Html.LabelFor(model => model.FirstName, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -69,7 +64,6 @@
                 </div>
             </div>
         </div>
-    </div>
 }
 
 <div>

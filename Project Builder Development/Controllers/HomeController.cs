@@ -10,7 +10,8 @@ namespace Project_Builder_Development.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            Manager m = new Manager();
+            return View(m.GetAllCategories());
         }
 
         public ActionResult About()

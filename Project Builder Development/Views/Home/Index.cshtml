@@ -3,7 +3,7 @@
 }
 <link rel="stylesheet" href="../../Content/Site.css">
 
-<div class="category">
+@*<div class="category">
     <div class="links">
         <a href="#act">ACT</a>
         <a href="#tech">TECH</a>
@@ -11,8 +11,20 @@
         <a href="#game">GAME</a>
         <a href="#music">MUSIC</a>
     </div>
-</div>
+</div>*@
 
+<div class="category">
+    <div class="links">
+            <ul>
+                @foreach (var items in Model)
+                {
+                    <li>
+                        <a href="">@items.Name</a>
+                    </li>
+                }
+            </ul>
+        </div>
+</div>
 <div class="container">
     <ul class="unorderedList">
         <li>
