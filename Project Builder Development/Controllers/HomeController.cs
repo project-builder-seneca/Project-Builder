@@ -13,7 +13,7 @@ namespace Project_Builder_Development.Controllers
         public ActionResult Index()
         {
             m.LoadData();
-            return View();
+            return View(m.GetAllCategories());
         }
 
         public ActionResult About()
