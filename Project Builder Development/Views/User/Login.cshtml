@@ -1,0 +1,57 @@
+﻿@model Project_Builder_Development.Models.UserLogin
+
+@{
+    ViewBag.Title = "Project Builder";
+}
+<head>
+    <link href="@Url.Content("~/Content/Login.css")" rel="stylesheet" type="text/css" />
+</head>
+
+<h2>@ViewBag.Title.</h2>
+<div class="row">
+    <div class="col-md-12">
+        <section id="loginForm">
+            @using (Html.BeginForm("Login", "User", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="container">
+                    <div class="row">
+                        <div class="Absolute-Center is-Responsive">
+                            <div align="center">
+                                <h3>Login</h3>
+                            </div>
+                            <div class="col-sm-12">
+                                <form action="" id="loginForm">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    <div class="email-form">
+                                        @Html.LabelFor(m => m.EmailID, new { @class = "col-md-2 control-label" })
+                                        @Html.TextBoxFor(m => m.EmailID, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.EmailID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="passwrod-form">
+                                        @Html.LabelFor(m => m.Password, new { @class = "col-md-2 control-label" })
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
+                                        @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <br />
+                                    <div class="login-btn">
+                                        <input type="submit" value="Log in" class="btn btn-default" />
+                                    </div>
+                                    <br />
+                                    <div class="form-group text-center">
+                                        <a href="#">Forgot Password</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;@Html.ActionLink("Register as a new user", "Register")
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </section>
+    </div>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
