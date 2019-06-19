@@ -1,27 +1,28 @@
-﻿div.well {
-    height: 250px;
-}
-
-.Absolute-Center {
-    margin: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
+﻿.container {
+    height:initial;
 }
 
 .Absolute-Center.is-Responsive {
-    width: 50%;
-    height: 50%;
-    min-width: 200px;
-    max-width: 400px;
-    padding: 40px;
+    margin:auto;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:50%;
+    padding:40px;
+    min-width:200px;
+    max-width:400px;
+    padding:40px;
 }
-
-#logo-container {
-    margin: auto;
-    margin-bottom: 10px;
-    width: 220px;
-    height: 50px;
-    background-image: url('http://placehold.it/200x30/000000/ffffff/&text=BRAND+LOGO');
+.row {
+    padding-top:80px;
+}
+.title {
+    display:flex;
+    justify-content:center;
+}
+.btn-default {
+    width: 100%;
+    background-color: #333;
+    color: #9d9d9d
 }
