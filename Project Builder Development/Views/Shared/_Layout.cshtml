@@ -7,6 +7,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 
+    <link rel="stylesheet" type="text/css" href="~/Content/Layout.css" />
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -34,8 +35,9 @@
     </div>
     <div class="container body-content" >
         @RenderBody()
-        <hr />
+        
         <footer>
+            <hr/>
             <p>&copy; @DateTime.Now.Year - Project Builder</p>
         </footer>
     </div>

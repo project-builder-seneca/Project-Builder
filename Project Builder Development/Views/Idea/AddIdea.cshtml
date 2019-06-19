@@ -7,22 +7,14 @@
 <h2>Create your own Idea - @Model.Owner</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
 <div class="form-horizontal">
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })   
-
-    <div class="form-group">
-        <span class="control-label col-md-2"><strong>Please choose Category: </strong></span>
-        <div class="col-md-10"> 
-            @Html.DropDownList("CategoryId", Model.CategoryList, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.CategoryList, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
+<div class="col-md-6" style="height:600px">
     <div class="form-group">
         @Html.LabelFor(model => model.Title, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
@@ -30,34 +22,59 @@
             @Html.ValidationMessageFor(model => model.Title, "", new { @class = "text-danger" })
         </div>
     </div>
-
     <div class="form-group">
         @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            @*
+                @Html.TextAreaFor(model => model.Description, new { @class = "form-control" })
+            *@
             @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
         </div>
     </div>
-
     <div class="form-group">
-        @Html.LabelFor(model => model.InvestmentGoal, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Category, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
+            @Html.DropDownList("CategoryId", Model.CategoryList, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.CategoryList, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2">Image</label>
+        <div class="col-md-10">
+            <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <label class="col-md-2">Detail Description</label>
+        <div class="col-md-10">
+            <textarea style="width:100%; height:400px"></textarea>
+        </div>
+    </div>
+    <p style="color:red">image and detail description are not working now</p>
+</div>
+<div class="col-md-6"style="height:600px">
+    <div class="form-group">
+        @Html.LabelFor(model => model.InvestmentGoal, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
             @Html.EditorFor(model => model.InvestmentGoal, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.InvestmentGoal, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.PartnersRequired, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.PartnersRequired, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
             @Html.EditorFor(model => model.PartnersRequired, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.PartnersRequired, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <span class="control-label col-md-2"><strong>Please choose the Skills you looking for the Patners in your Project: </strong></span> <br />
-        <div class="col-md-10">
+        <span class="control-label col-md-4"><strong>Please choose the Skills</strong></span> <br />
+        <div class="col-md-8">
             @foreach (var items in Model.SkillList)
             {
                 <p>
@@ -69,16 +86,16 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.VolunteersRequired, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.VolunteersRequired, htmlAttributes: new { @class = "control-label col-md-4" })
+        <div class="col-md-8">
             @Html.EditorFor(model => model.VolunteersRequired, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.VolunteersRequired, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        <span class="control-label col-md-2"><strong>Please choose the Skills you looking for the Volunteers in your Project: </strong></span> <br />
-        <div class="col-md-10">
+        <span class="control-label col-md-4"><strong>Please choose the Skills</strong></span> <br />
+        <div class="col-md-8">
             @foreach (var items in Model.SkillList)
             {
                 <p>
@@ -90,16 +107,16 @@
     </div>
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-2 col-md-4">
             <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+        <div class="col-md-4">
+            @Html.ActionLink("Back to List", "Index")
         </div>
     </div>
 </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
 </div>
+}
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
