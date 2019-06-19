@@ -5,11 +5,12 @@
     <div class="category">
         <div class="links">
             <ul>
-                
+                @foreach (var items in Model)
+                {
                     <li>
-                        <a href="">items.Name</a>
+                        <a href="">@items.Name</a>
                     </li>
-                
+                }
             </ul>
         </div>
     </div>
