@@ -39,7 +39,7 @@
         <input type="button" value="Unlike" class="btn btn-default col-md-3" />
     </div>
     <div class="detailDiscription col-md-12">
-        <p style="color:red">Date, buttons, participants are not working now</p>
+        <p style="color:red">Date, buttons(About, Comments, Like, Unlike, Send request, and Edit), participants are not working now</p>
     </div>
 </div>
 <div class="right col-md-4">
@@ -82,14 +82,15 @@
         <div class="col-md-6">Posistion</div>
     </div>
     <div class="participants col-md-12">
-        <div class="col-md-6" ></div>
+        <div class="col-md-6"></div>
         <div class="col-md-6"></div>
     </div>
+    <p style="text-align:center">
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
+        @Html.ActionLink("Back to List", "Ideas")
+
+    </p>
 </div>
 </div>
-<p>
-    @*
-       @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
-    @Html.ActionLink("Back to List", "Ideas") 
-    *@
-</p>
+
