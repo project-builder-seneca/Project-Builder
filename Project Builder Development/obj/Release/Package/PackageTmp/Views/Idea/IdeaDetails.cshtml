@@ -3,99 +3,94 @@
 @{
     ViewBag.Title = "IdeaDetails";
 }
+    <head>
+        <link rel="stylesheet" type="text/css" href="~/Content/IdeaDetails.css" />
+    </head>
 
 <h2>Idea Details</h2>
-
-<div>
+<div class="container">
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IdeaId)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IdeaId)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Category.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Category.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Owner)
-        </dt>
-
-        <dd>
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="left col-md-8">
+    <div class="firstLine form-group">
+        <div class="col-md-2">
             @Html.DisplayFor(model => model.Owner)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
-
-        <dd>
+        </div>
+        <div class="col-md-2">
+            <p>2019-06-06</p>
+        </div>
+        <div class="col-md-2">
+            @Html.DisplayFor(model => model.Category.Name)
+        </div>
+        <div class="col-md-6">
             @Html.DisplayFor(model => model.Title)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.InvestmentGoal)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.InvestmentGoal)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PartnersRequired)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PartnersRequired)
-        </dd>
-
-        <dt>
-            Skills looking in Partners:
-        </dt>
-        <dd>
+        </div>
+    </div>
+    <div class="image col-md-12">
+        <h1>Image</h1>
+    </div>
+    <div class="discription col-md-12">
+        @Html.DisplayFor(model => model.Description)
+    </div>
+    <div class="buttons col-md-12">
+        <input type="button" value="About" class="btn btn-default col-md-3" />
+        <input type="button" value="Comments" class="btn btn-default col-md-3" />
+        <input type="button" value="Like" class="btn btn-default col-md-3" />
+        <input type="button" value="Unlike" class="btn btn-default col-md-3" />
+    </div>
+    <div class="detailDiscription col-md-12">
+        <p style="color:red">Date, buttons(About, Comments, Like, Unlike, Send request, and Edit), participants are not working now</p>
+    </div>
+</div>
+<div class="right col-md-4">
+    <div class="requirementForm col-md-12">
+        <p>Requirements</p>
+    </div>
+    <div class="header col-md-12">
+        <div class="col-md-3">Type</div>
+        <div class="col-md-3">Number</div>
+        <div class="col-md-6">Skills</div>
+    </div>
+    <div class="partner col-md-12">
+        <div class="col-md-3">Partner</div>
+        <div class="col-md-3">@Html.DisplayFor(model => model.PartnersRequired)</div>
+        <div class="col-md-6">
             @foreach (var items in @Model.PatSkills)
             {
-                <p>@items.Name</p>
+                <span>@items.Name</span>
             }
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.VolunteersRequired)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.VolunteersRequired)
-        </dd>
-
-        <dt>
-            Skills looking in Volunteers:
-        </dt>
-        <dd>
+        </div>
+    </div>
+    <div class="volunteer col-md-12">
+        <div class="col-md-3">Volunteer</div>
+        <div class="col-md-3">@Html.DisplayFor(model => model.VolunteersRequired)</div>
+        <div class="col-md-6">
             @foreach (var items in @Model.VolSkills)
             {
-                <p>@items.Name</p>
+                <span>@items.Name</span>
             }
-        </dd>
+        </div>
+    </div>
+    <div class="buttons col-md-12">
+        <input type="button" value="Send request" class="btn btn-default col-md-12" style="max-width:100%" />
+    </div>
+    <div class="participantsForm col-md-12">
+        <p>Participants</p>
+    </div>
+    <div class="header col-md-12">
+        <div class="col-md-6">User ID</div>
+        <div class="col-md-6">Posistion</div>
+    </div>
+    <div class="participants col-md-12">
+        <div class="col-md-6"></div>
+        <div class="col-md-6"></div>
+    </div>
+    <p style="text-align:center">
 
-    </dl>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
+        @Html.ActionLink("Back to List", "Ideas")
+
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
-    @Html.ActionLink("Back to List", "Ideas")
-</p>
+</div>
+

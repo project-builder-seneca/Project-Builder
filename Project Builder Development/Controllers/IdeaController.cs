@@ -25,6 +25,7 @@ namespace Project_Builder_Development.Controllers
         }
 
         // GET: Idea/Create
+        [Authorize]
         public ActionResult AddIdea()
         {
             var obj = new IdeaFormViewModel();
@@ -40,6 +41,7 @@ namespace Project_Builder_Development.Controllers
 
         // POST: Idea/Create
         [HttpPost]
+        [Authorize]
         public ActionResult AddIdea(IdeaAddViewModel newIdea)
         {
             newIdea.Owner = HttpContext.User.Identity.Name;
