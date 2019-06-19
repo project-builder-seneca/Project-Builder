@@ -1,21 +1,21 @@
 ﻿.container {
-    height: initial;
+    height:initial;
 }
 
 .Absolute-Center.is-Responsive {
-    margin: auto;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    height: 50%;
-    padding: 40px;
-    min-width: 200px;
-    max-width: 400px;
-    padding: 40px;
+    margin:auto;
+    top:0;
+    left:0;
+    bottom:0;
+    right:0;
+    height:50%;
+    padding:40px;
+    min-width:200px;
+    max-width:400px;
+    padding:40px;
 }
 
 .title {
-    display: flex;
-    justify-content: center;
+    display:flex;
+    justify-content:center;
 }

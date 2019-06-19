@@ -39,14 +39,14 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Partners Required")]
         public int PartnersRequired { get; set; }
 
-        [Display(Name = "Skills Required for Partners: ")]
+        [Display(Name = "Skills Required for Partners:")]
         [StringLength(25, ErrorMessage = "Please Choose from the provided list!", MinimumLength = 2)]
         public IEnumerable<SkillBaseViewModel> PatSkills { get; set; }
 
         [Display(Name = "Volunteers Required")]
         public int VolunteersRequired { get; set; }
 
-        [Display(Name = "Skills required for Volunteers: ")]
+        [Display(Name = "Skills required for Volunteers:")]
         public IEnumerable<SkillBaseViewModel> VolSkills { get; set; }
     }
 
