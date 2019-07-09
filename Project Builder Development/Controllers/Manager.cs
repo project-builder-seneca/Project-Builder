@@ -45,7 +45,6 @@ namespace Project_Builder_Development.Controllers
 
                 //Register
                 cfg.CreateMap<RegisterViewModel, RegisterFormViewModel>();
-                cfg.CreateMap<RegisterFormViewModel, RegisterViewModel>();
 
             });
 
