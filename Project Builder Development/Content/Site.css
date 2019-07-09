@@ -41,3 +41,11 @@ textarea {
     margin-top: 20px;
     border-radius: 20px;
 }
+
+/*home page footer*/
+footer {
+    position: absolute;
+    bottom: 0;
+    width: inherit;
+    height: 80px;
+}
