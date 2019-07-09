@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -13,7 +14,10 @@ namespace Project_Builder_Development.Controllers
         public ActionResult Index()
         {
             m.LoadData();
-            return View(m.GetAllCategories());
+            dynamic obj = new ExpandoObject();
+            obj.Categories = m.GetAllCategories();
+            obj.Ideas = m.GetAllIdeas();
+            return View(obj);
         }
 
         public ActionResult About()

@@ -1,11 +1,12 @@
 ﻿@{
     ViewBag.Title = "Home Page";
+    string categorySelected = null;
 }
 
     <div class="category">
         <div class="links">
             <ul>
-                @foreach (var items in Model)
+                @foreach (var items in Model.Categories)
                 {
                     <li>
                         <a href="">@items.Name</a>
@@ -14,8 +15,25 @@
             </ul>
         </div>
     </div>
+
 <div class="row">
     <div class="col-md-4">
-
+        @if (categorySelected == null)
+        {
+            <br /><br /><br />
+            <h4 style="padding-left:120px">Please choose one of the Category above to see the related Ideas! <mark>(Feauture comming soon)</mark></h4> 
+        }
+        else if (categorySelected == "IT")
+        {
+            <p>I am at IT</p>
+        }
+        else if (categorySelected == "Business")
+        {
+            <p>I am at Business</p>
+        }
+        else if (categorySelected == "Other")
+        {
+            <p>I am at Others</p>
+        }
     </div>
 </div>
