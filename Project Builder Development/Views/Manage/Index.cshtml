@@ -24,6 +24,20 @@
             }
             ]
         </dd>
-       
+    </dl>
+    <dl class="dl-horizontal">
+        <dt>Profile:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Change your profile", "ChangeProfile")
+            }
+            else
+            {
+                @Html.ActionLink("Home", "Index")
+            }
+            ]
+        </dd>
     </dl>
 </div>
