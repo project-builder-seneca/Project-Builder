@@ -91,4 +91,62 @@ namespace Project_Builder_Development.Models
         public string Name { get; set; }
 
     }
+
+
+    public class Task
+    {
+
+        [Key]
+        public int taskNo { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Task Name: ")]
+        public string taskName { get; set; }
+
+        [Required]
+        [Display(Name = "Start Date: ")]
+        public DateTime startDate { get; set; }
+
+        [Required]
+        [Display(Name = "Due Date: ")]
+        public DateTime dueDate { get; set; }
+
+        [Required]
+        [Display(Name = "End Date: ")]
+        public DateTime endDate { get; set; }
+    }
+
+    public class PersonalSkill
+    {
+        [Key]
+        public int pSkillNo { get; set; }
+
+        [Required]
+        [StringLength(100)]
+        [Display(Name = "Personal skill name: ")]
+        public string pSkillName { get; set; }
+
+    }
+
+    public class Expense
+    {
+        [Key]
+        public int expenseNo { get; set; }
+
+        [Required]
+        [Display(Name = "Cost: ")]
+        public int cost { get; set; }
+
+        [Required]
+        [StringLength(300)]
+        [Display(Name = "Coment: ")]
+        public string coment { get; set; }
+
+        [Required]
+        [Display(Name = "Date: ")]
+        public DateTime expenseDate { get; set; }
+
+    }
+
 }
