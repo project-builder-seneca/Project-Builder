@@ -228,6 +228,8 @@
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <None Include="Properties\PublishProfiles\Project-Builder - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Project-Builder-v - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\Project-Builder-v - Web Deploy1.pubxml" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

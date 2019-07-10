@@ -3,94 +3,125 @@
 @{
     ViewBag.Title = "IdeaDetails";
 }
-    <head>
-        <link rel="stylesheet" type="text/css" href="~/Content/IdeaDetails.css" />
-    </head>
-
 <h2>Idea Details</h2>
 <div class="container">
-    <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-<div class="left col-md-8">
-    <div class="firstLine form-group">
-        <div class="col-md-2">
-            @Html.DisplayFor(model => model.Owner)
+    <div class="left col-md-8"
+         style="padding-left:0; padding-right:0; height:600px;">
+        <div class="firstLine form-group">
+            <div class="col-md-2"
+                 style="border:1px solid gray; text-align:center; height: 30px">
+                @Html.DisplayFor(model => model.Owner)
+            </div>
+            <div class="col-md-2"
+                 style="border:1px solid gray; text-align:center; height:30px">
+                <p>2019-06-06</p>
+            </div>
+            <div class="col-md-2"
+                 style="border:1px solid gray; text-align:center; height:30px">
+                @Html.DisplayFor(model => model.Category.Name)
+            </div>
+            <div class="col-md-6"
+                 style="border:1px solid gray; text-align:center; height:30px">
+                @Html.DisplayFor(model => model.Title)
+            </div>
         </div>
-        <div class="col-md-2">
-            <p>2019-06-06</p>
+        <div class="image col-md-12"
+             style="background-color:#333; text-align:center; height:300px;">
+            <h1 style="color: white;">Image</h1>
         </div>
-        <div class="col-md-2">
-            @Html.DisplayFor(model => model.Category.Name)
+        <div class="discription col-md-12"
+             style="border:1px solid gray; height:100px;">
+            @Html.DisplayFor(model => model.Description)
         </div>
-        <div class="col-md-6">
-            @Html.DisplayFor(model => model.Title)
+        <div class="buttons col-md-12"
+             style="padding-left:0; padding-right:0;">
+            <input type="button" value="About" class="btn btn-default col-md-3"
+                   style="background-color:#333; color:#9d9d9d;" />
+            <input type="button" value="Comments" class="btn btn-default col-md-3"
+                   style="background-color:#333; color:#9d9d9d;" />
+            <input type="button" value="Like" class="btn btn-default col-md-3"
+                   style="background-color:#333; color:#9d9d9d;" />
+            <input type="button" value="Unlike" class="btn btn-default col-md-3"
+                   style="background-color:#333; color:#9d9d9d;" />
         </div>
-    </div>
-    <div class="image col-md-12">
-        <h1>Image</h1>
-    </div>
-    <div class="discription col-md-12">
-        @Html.DisplayFor(model => model.Description)
-    </div>
-    <div class="buttons col-md-12">
-        <input type="button" value="About" class="btn btn-default col-md-3" />
-        <input type="button" value="Comments" class="btn btn-default col-md-3" />
-        <input type="button" value="Like" class="btn btn-default col-md-3" />
-        <input type="button" value="Unlike" class="btn btn-default col-md-3" />
-    </div>
-    <div class="detailDiscription col-md-12">
-        <p style="color:red">Date, buttons(About, Comments, Like, Unlike, Send request, and Edit), participants are not working now</p>
-    </div>
-</div>
-<div class="right col-md-4">
-    <div class="requirementForm col-md-12">
-        <p>Requirements</p>
-    </div>
-    <div class="header col-md-12">
-        <div class="col-md-3">Type</div>
-        <div class="col-md-3">Number</div>
-        <div class="col-md-6">Skills</div>
-    </div>
-    <div class="partner col-md-12">
-        <div class="col-md-3">Partner</div>
-        <div class="col-md-3">@Html.DisplayFor(model => model.PartnersRequired)</div>
-        <div class="col-md-6">
-            @foreach (var items in @Model.PatSkills)
-            {
-                <span>@items.Name</span>
-            }
+        <div class="detailDiscription col-md-12"
+             style="border:1px solid gray; height:250px;">
+            <p style="color:red">Date, buttons(About, Comments, Like, Unlike, Send request, and Edit), participants are not working now</p>
         </div>
     </div>
-    <div class="volunteer col-md-12">
-        <div class="col-md-3">Volunteer</div>
-        <div class="col-md-3">@Html.DisplayFor(model => model.VolunteersRequired)</div>
-        <div class="col-md-6">
-            @foreach (var items in @Model.VolSkills)
-            {
-                <span>@items.Name</span>
-            }
+    <div class="right col-md-4"
+         style="padding-left:0; padding-right:0; height:600px;">
+        <div class="requirementForm col-md-12"
+             style="border:1px solid gray; text-align:center; font-size:16px; height:30px;">
+            <p>Requirements</p>
         </div>
-    </div>
-    <div class="buttons col-md-12">
-        <input type="button" value="Send request" class="btn btn-default col-md-12" style="max-width:100%" />
-    </div>
-    <div class="participantsForm col-md-12">
-        <p>Participants</p>
-    </div>
-    <div class="header col-md-12">
-        <div class="col-md-6">User ID</div>
-        <div class="col-md-6">Posistion</div>
-    </div>
-    <div class="participants col-md-12">
-        <div class="col-md-6"></div>
-        <div class="col-md-6"></div>
-    </div>
-    <p style="text-align:center">
+        <div class="header col-md-12"
+             style="padding-left:0; padding-right:0;">
+            <div class="col-md-3"
+                 style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Type</div>
+            <div class="col-md-3"
+                 style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Number</div>
+            <div class="col-md-6"
+                 style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Skills</div>
+        </div>
+        <div class="partner col-md-12"
+             style="height:185px; border:1px solid gray; text-align:center; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;">
+            <div class="col-md-3"
+                 style="text-align:center;">Partner</div>
+            <div class="col-md-3"
+                 style="text-align:center;">@Html.DisplayFor(model => model.PartnersRequired)</div>
+                <div class="col-md-6"
+                     style="text-align:center;">
+                    @foreach (var items in @Model.PatSkills)
+                    {
+                        <span>@items.Name</span>
+                    }
+                </div>
+            </div>
+            <div class="volunteer col-md-12"
+                 style="height:185px; border:1px solid gray; text-align:center; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;">
+                <div class="col-md-3"
+                     style="text-align:center;">Volunteer</div>
+                <div class="col-md-3"
+                     style="text-align:center;">@Html.DisplayFor(model => model.VolunteersRequired)</div>
+                    <div class="col-md-6"
+                         style="text-align:center;">
+                        @foreach (var items in @Model.VolSkills)
+                        {
+                            <span>@items.Name</span>
+                        }
+                    </div>
+                </div>
+                <div class="buttons col-md-12"
+                     style="padding-left:0; padding-right:0;">
+                    <input type="button" value="Send request" class="btn btn-default col-md-12"
+                           style="max-width:100%; background-color:#333; color:#9d9d9d;" />
+                </div>
+                <div class="participantsForm col-md-12"
+                     style="border:1px solid gray; text-align:center; font-size:16px; height:30px;">
+                    <p>Participants</p>
+                </div>
+                <div class="header col-md-12"
+                     style="padding-left:0; padding-right:0;">
+                    <div class="col-md-6"
+                         style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">User ID</div>
+                    <div class="col-md-6"
+                         style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Posistion</div>
+                </div>
+                <div class="participants col-md-12"
+                     style="padding-left:0; padding-right:0;">
+                    <div class="col-md-6"
+                         style="border:1px solid gray; height:170px; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;"></div>
+                    <div class="col-md-6"
+                         style="border:1px solid gray; height:170px; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;"></div>
+                </div>
+                <p style="text-align:center">
 
-        @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
-        @Html.ActionLink("Back to List", "Ideas")
+                    @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
+                    @Html.ActionLink("Back to List", "Ideas")
 
-    </p>
-</div>
-</div>
+                </p>
+            </div>
+        </div>
 
