@@ -4,6 +4,7 @@ using System.Linq;
 using AutoMapper;
 using System.Web;
 using Project_Builder_Development.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Project_Builder_Development.Controllers
 {
@@ -142,9 +143,7 @@ namespace Project_Builder_Development.Controllers
         public List<string> RoleClaimGetAllStrings()
         {
             return ds.RoleClaims.OrderBy(r => r.Name).Select(r => r.Name).ToList();
-        }
-
-
+        } 
 
         public void LoadData() {
 
