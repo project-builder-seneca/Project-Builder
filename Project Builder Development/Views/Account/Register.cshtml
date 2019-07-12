@@ -36,6 +36,10 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            @if (ViewBag.ErrorMessage == "Email is already Taken!")
+            {
+                <span style="color:#ff0000;">@ViewBag.ErrorMessage</span>
+            }
         </div>
     </div>
 
@@ -44,6 +48,10 @@
         <div class="col-md-10">
             @Html.EditorFor(model => model.UserId, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.UserId, "", new { @class = "text-danger" })
+            @if (ViewBag.ErrorMessage == "User Name is already Taken!")
+            {
+                <span style="color:#ff0000;">@ViewBag.ErrorMessage</span>
+            }
         </div>
     </div>
 

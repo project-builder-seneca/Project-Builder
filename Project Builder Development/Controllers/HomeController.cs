@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNet.Identity.EntityFramework;
+using System;
 using System.Collections.Generic;
 using System.Dynamic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace Project_Builder_Development.Controllers
             dynamic obj = new ExpandoObject();
             obj.Categories = m.GetAllCategories();
             obj.Ideas = m.GetAllIdeas();
+
             return View(obj);
         }
 

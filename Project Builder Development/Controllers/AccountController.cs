@@ -10,6 +10,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AutoMapper;
 using Project_Builder_Development.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Project_Builder_Development.Controllers
 {
@@ -157,38 +158,68 @@ namespace Project_Builder_Development.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterViewModel model)
         {
-            { 
-                    var user = new ApplicationUser { UserName = model.UserId, Email = model.Email };
-                    var result = await UserManager.CreateAsync(user, model.Password);
+            bool flag = false;
+            var context = new IdentityDbContext();
+            var Roles = m.RoleClaimGetAllStrings();
+            var form = new RegisterFormViewModel();
+            var obj = context.Users.ToList();
 
-                    if (result.Succeeded)
-                    {
-
-                        // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                        // Send an email with this link
-                        string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id); 
-                        var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                        await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
-
-                        //Add Claims
-
-                        await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Email, model.Email));
-                        await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, "User"));
-
-                        foreach (var role in model.Roles)
-                        {
-                            await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, role.Trim()));
-                        }
-
-                        await SignInManager.SignInAsync(user, isPersistent: true, rememberBrowser: true);
- 
-                        return RedirectToAction("Index", "Home");
-                    }
-                    AddErrors(result);
+            foreach (var item in obj) {
+                if (model.Email.CompareTo(item.Email) == 0)
+                {
+                    
+                    form.RoleList = new MultiSelectList(Roles);
+                    ViewBag.ErrorMessage = "Email is already Taken!";
+                    return View(form);
                 }
+                else if (model.UserId.CompareTo(item.UserName) == 0)
+                {
+                    form.RoleList = new MultiSelectList(Roles);
+                    ViewBag.ErrorMessage = "User Name is already Taken!";
+                    return View(form);
+                    //return Content("<script language='javascript' type='text/javascript'>alert('User Name already taken!');</script>");
+                }
+                else {
+
+                }
+            }
+            if (!flag)
+            {
+                var user = new ApplicationUser { UserName = model.UserId, Email = model.Email };
+                var result = await UserManager.CreateAsync(user, model.Password);
+
+                if (result.Succeeded)
+                {
+
+                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
+                    // Send an email with this link
+                    string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+                    await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+
+                    //Add Claims
+
+                    await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Email, model.Email));
+                    await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, "User"));
+
+                    foreach (var role in model.Roles)
+                    {
+                        await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, role.Trim()));
+                    }
+
+                    await SignInManager.SignInAsync(user, isPersistent: true, rememberBrowser: true);
+
+                    return RedirectToAction("Index", "Home");
+                }
+                AddErrors(result);
+            }
+            else {
+                RedirectToAction("Index","Home");
+            }
 
             // If we got this far, something failed, redisplay form
-            return View(model);
+            form.RoleList = new MultiSelectList(Roles);
+            return View(form);
         }
 
         //

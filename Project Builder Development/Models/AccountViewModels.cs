@@ -94,6 +94,7 @@ namespace Project_Builder_Development.Models
         [EmailAddress]
         [StringLength(100, ErrorMessage = "Email address must be atleast {2} characters long.", MinimumLength = 3)]
         [Display(Name = "Email Address")]
+        [Index(IsUnique = true)]
         public string Email { get; set; }
 
         [Required]
