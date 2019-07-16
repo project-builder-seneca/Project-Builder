@@ -48,6 +48,9 @@ namespace Project_Builder_Development.Models
 
         [Display(Name = "Skills required for Volunteers:")]
         public IEnumerable<SkillBaseViewModel> VolSkills { get; set; }
+
+        [Display(Name = "Reply")]
+        public IEnumerable<ReplyBaseViewModel> Replies { get; set; }
     }
 
     public class IdeaFormViewModel : IdeaBaseViewModel{

@@ -10,6 +10,8 @@ namespace Project_Builder_Development.Controllers
     public class IdeaController : Controller
     {
         public int IdeaId = 1;
+        public int ReplyId = 1;
+        public int ReplyReplyId = 1;
         Manager m = new Manager();
         // GET: Idea
         
@@ -57,6 +59,61 @@ namespace Project_Builder_Development.Controllers
             }
         }
 
+
+        // Reply 
+
+        [Route("Idea/{id}/addreply")]
+        public ActionResult AddReply(int Id)
+        {
+            var obj = new ReplyBaseViewModel();
+            obj.UserName = HttpContext.User.Identity.Name;
+            obj.IdeaId = Id;
+            return View(obj);
+        }
+
+        [Route("Idea/{id}/addreply")]
+        [HttpPost]
+        public ActionResult AddReply(ReplyBaseViewModel newReply)
+        {
+            newReply.ReplyId = ReplyId;
+            ReplyId++;
+            var addedReply = m.AddReply(newReply);
+            if (addedReply == null)
+            {
+                return View(newReply);
+            }
+            else
+            {
+                return RedirectToAction("../Idea/IdeaDetails", new { id = addedReply.IdeaId });
+            }
+        }
+
+        [Route("Idea/{id}/reply")]
+        public ActionResult AddReplyReply(int id1, int id2)
+        {
+            var obj = new ReplyReplyBaseViewModel();
+            obj.ReplyIdd = id1;
+            obj.IdeaId = id2;
+            return View(obj);
+        }
+
+        [Route("Idea/{id}/reply")]
+        [HttpPost]
+        public ActionResult AddReplyReply(ReplyReplyBaseViewModel newReply)
+        {
+            newReply.ReplyId = ReplyReplyId;
+            ReplyReplyId++;
+            var addedReply = m.AddReplyReply(newReply);
+            if (addedReply == null)
+            {
+                return View(newReply);
+            }
+            else
+            {
+                return RedirectToAction("../Idea/IdeaDetails", new { id = addedReply.IdeaId });
+            }
+        }
+        
         // GET: Idea/Edit/5
         public ActionResult Edit(int id)
         {
