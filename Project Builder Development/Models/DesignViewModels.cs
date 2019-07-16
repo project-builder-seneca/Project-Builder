@@ -11,6 +11,7 @@ namespace Project_Builder_Development.Models
         public Idea() {
             PatSkills = new List<Skill>();
             VolSkills = new List<Skill>();
+            Replies = new List<Reply>();
         }
 
         [Required]
@@ -51,6 +52,9 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Skills required for Volunteers: ")]
         public ICollection<Skill> VolSkills { get; set; }
 
+        [Display(Name = "Reply")]
+        public ICollection<Reply> Replies { get; set; }
+
     }
 
     public class Category
@@ -90,5 +94,49 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Role: ")]
         public string Name { get; set; }
 
+    }
+
+    public class Reply
+    {
+        public Reply() {
+            ReplyReplies = new List<ReplyReply>();
+        }   
+
+        [Required]
+        [Display(Name = "Id: ")]
+        public int ReplyId { get; set; }
+
+        [Required]
+        [Display(Name = "Message")]
+        public string message { get; set; }
+
+        [Required]
+        [Display(Name = "By: ")]
+        public string UserName { get; set; }
+
+        [Required]
+        public int IdeaId { get; set; }
+
+        [Display(Name = "Reply")]
+        public ICollection<ReplyReply> ReplyReplies { get; set; }
+    }
+
+    public class ReplyReply
+    {
+
+        [Key]
+        [Required]
+        [Display(Name = "Id: ")]
+        public int ReplyId { get; set; }
+
+        [Required]
+        [Display(Name = "Message")]
+        public string message { get; set; }
+
+        [Required]
+        public int ReplyIdd { get; set; }
+
+        [Required]
+        public int IdeaId { get; set; }
     }
 }

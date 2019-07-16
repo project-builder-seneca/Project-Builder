@@ -201,8 +201,53 @@
     <Compile Include="Migrations\201906170243315_Added RoleClaim Class.Designer.cs">
       <DependentUpon>201906170243315_Added RoleClaim Class.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907161815397_Added Reply Class.cs" />
+    <Compile Include="Migrations\201907161815397_Added Reply Class.Designer.cs">
+      <DependentUpon>201907161815397_Added Reply Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161832447_Added Reply1 Class.cs" />
+    <Compile Include="Migrations\201907161832447_Added Reply1 Class.Designer.cs">
+      <DependentUpon>201907161832447_Added Reply1 Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161842282_delete Reply objects.cs" />
+    <Compile Include="Migrations\201907161842282_delete Reply objects.Designer.cs">
+      <DependentUpon>201907161842282_delete Reply objects.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161844199_Added Reply - 2 Class.cs" />
+    <Compile Include="Migrations\201907161844199_Added Reply - 2 Class.Designer.cs">
+      <DependentUpon>201907161844199_Added Reply - 2 Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161847229_Added Reply - 3 Class.cs" />
+    <Compile Include="Migrations\201907161847229_Added Reply - 3 Class.Designer.cs">
+      <DependentUpon>201907161847229_Added Reply - 3 Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161849509_Added Reply - 4 Class.cs" />
+    <Compile Include="Migrations\201907161849509_Added Reply - 4 Class.Designer.cs">
+      <DependentUpon>201907161849509_Added Reply - 4 Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161854073_test.cs" />
+    <Compile Include="Migrations\201907161854073_test.Designer.cs">
+      <DependentUpon>201907161854073_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161856089_test1.cs" />
+    <Compile Include="Migrations\201907161856089_test1.Designer.cs">
+      <DependentUpon>201907161856089_test1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161907165_Corrections.cs" />
+    <Compile Include="Migrations\201907161907165_Corrections.Designer.cs">
+      <DependentUpon>201907161907165_Corrections.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161929570_Corrections1.cs" />
+    <Compile Include="Migrations\201907161929570_Corrections1.Designer.cs">
+      <DependentUpon>201907161929570_Corrections1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907161939194_Corrections2.cs" />
+    <Compile Include="Migrations\201907161939194_Corrections2.Designer.cs">
+      <DependentUpon>201907161939194_Corrections2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\ReplyViewModel.cs" />
     <Compile Include="Models\DesignViewModels.cs" />
     <Compile Include="Models\IdeaBaseViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
@@ -292,9 +337,12 @@
     <Content Include="Views\Idea\IdeaDetails.cshtml" />
     <Content Include="Views\Idea\AddIdea.cshtml" />
     <Content Include="Views\Home\RegisterComplete.html" />
+    <Content Include="Views\Idea\AddReply.cshtml" />
+    <Content Include="Views\Idea\AddReplyReply.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Reply\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -313,6 +361,39 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906170243315_Added RoleClaim Class.resx">
       <DependentUpon>201906170243315_Added RoleClaim Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161815397_Added Reply Class.resx">
+      <DependentUpon>201907161815397_Added Reply Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161832447_Added Reply1 Class.resx">
+      <DependentUpon>201907161832447_Added Reply1 Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161842282_delete Reply objects.resx">
+      <DependentUpon>201907161842282_delete Reply objects.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161844199_Added Reply - 2 Class.resx">
+      <DependentUpon>201907161844199_Added Reply - 2 Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161847229_Added Reply - 3 Class.resx">
+      <DependentUpon>201907161847229_Added Reply - 3 Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161849509_Added Reply - 4 Class.resx">
+      <DependentUpon>201907161849509_Added Reply - 4 Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161854073_test.resx">
+      <DependentUpon>201907161854073_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161856089_test1.resx">
+      <DependentUpon>201907161856089_test1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161907165_Corrections.resx">
+      <DependentUpon>201907161907165_Corrections.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161929570_Corrections1.resx">
+      <DependentUpon>201907161929570_Corrections1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907161939194_Corrections2.resx">
+      <DependentUpon>201907161939194_Corrections2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

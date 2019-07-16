@@ -125,3 +125,19 @@
             </div>
         </div>
 
+        <br /><br /><br /><br /><br /> <br /><br />
+
+        @Html.ActionLink("Your Feedback", "AddReply", new { id = Model.IdeaId })
+
+        <h1>Feedback from People</h1>
+
+        @foreach (var item in Model.Replies)
+        {
+            <h4>By: @item.UserName</h4>
+            <h5>Message: @item.message</h5>
+            <pre>     @Html.ActionLink("Reply", "AddReplyReply", new { id1 = item.ReplyId, id2 = Model.IdeaId })</pre>
+            foreach (var i in item.ReplyReplies) {
+            <pre>         <span>Replies: </span> @i.message</pre>
+            }
+        }
+

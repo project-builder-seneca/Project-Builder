@@ -47,6 +47,14 @@ namespace Project_Builder_Development.Controllers
                 //Register
                 cfg.CreateMap<RegisterViewModel, RegisterFormViewModel>();
 
+                //Reply
+                cfg.CreateMap<Reply,ReplyBaseViewModel>();
+                cfg.CreateMap<ReplyBaseViewModel,Reply>();
+
+                //ReplyReply
+                cfg.CreateMap<ReplyReply, ReplyReplyBaseViewModel>();
+                cfg.CreateMap<ReplyReplyBaseViewModel,ReplyReply>();
+
             });
 
             mapper = config.CreateMapper();
@@ -70,7 +78,7 @@ namespace Project_Builder_Development.Controllers
 
         public IdeaBaseViewModel GetOneIdea(int? id)
         {
-            var obj = ds.Ideas.Include("VolSkills").Include("PatSkills").Include("Category").SingleOrDefault(i => id == i.IdeaId);
+            var obj = ds.Ideas.Include("VolSkills").Include("PatSkills").Include("Category").Include("Replies").Include("Replies.ReplyReplies").SingleOrDefault(i => id == i.IdeaId);
             return obj == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(obj);
         }
 
@@ -143,7 +151,41 @@ namespace Project_Builder_Development.Controllers
         public List<string> RoleClaimGetAllStrings()
         {
             return ds.RoleClaims.OrderBy(r => r.Name).Select(r => r.Name).ToList();
-        } 
+        }
+
+        // Reply
+
+        /*public IEnumerable<ReplyBaseViewModel> GetAllReplies()
+        {
+            return mapper.Map<IEnumerable<Reply>, IEnumerable<ReplyBaseViewModel>>(ds.Replies);
+        }
+
+        public ReplyBaseViewModel GetOneReply(int? i)
+        {
+            var obj = ds.Replies.SingleOrDefault(e => i == e.ReplyId);
+            return mapper.Map<Reply, ReplyBaseViewModel>(obj);
+        }*/
+
+        public ReplyBaseViewModel AddReply(ReplyBaseViewModel newReply)
+        {
+            var addedReply = ds.Replies.Add(mapper.Map<ReplyBaseViewModel, Reply>(newReply));
+
+            var idea = ds.Ideas.Find(newReply.IdeaId);
+            idea.Replies.Add(addedReply);
+
+            ds.SaveChanges();
+            return addedReply == null ? null : mapper.Map<Reply, ReplyBaseViewModel>(addedReply);
+        }
+
+        public ReplyReplyBaseViewModel AddReplyReply(ReplyReplyBaseViewModel newReplyReply) {
+            var addedReplyReply = ds.ReplyReplies.Add(mapper.Map<ReplyReplyBaseViewModel,ReplyReply>(newReplyReply));
+
+            var reply = ds.Replies.Find(newReplyReply.ReplyIdd);
+            reply.ReplyReplies.Add(mapper.Map<ReplyReplyBaseViewModel,ReplyReply>(newReplyReply));
+
+            ds.SaveChanges();
+            return addedReplyReply == null ? null : mapper.Map<ReplyReply,ReplyReplyBaseViewModel>(addedReplyReply);
+        }
 
         public void LoadData() {
 
