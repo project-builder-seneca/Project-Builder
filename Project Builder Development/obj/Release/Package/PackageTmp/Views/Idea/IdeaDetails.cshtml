@@ -3,6 +3,7 @@
 @{
     ViewBag.Title = "IdeaDetails";
 }
+
 <h2>Idea Details</h2>
 <div class="container">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -36,14 +37,18 @@
         </div>
         <div class="buttons col-md-12"
              style="padding-left:0; padding-right:0;">
-            <input type="button" value="About" class="btn btn-default col-md-3"
-                   style="background-color:#333; color:#9d9d9d;" />
-            <input type="button" value="Comments" class="btn btn-default col-md-3"
-                   style="background-color:#333; color:#9d9d9d;" />
-            <input type="button" value="Like" class="btn btn-default col-md-3"
-                   style="background-color:#333; color:#9d9d9d;" />
-            <input type="button" value="Unlike" class="btn btn-default col-md-3"
-                   style="background-color:#333; color:#9d9d9d;" />
+            @*<input type="button" value="About" class="btn btn-default col-md-3"
+        style="background-color:#333; color:#9d9d9d;" />*@
+            <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;">About</button>
+            @*<input type="button" value="Comments" class="btn btn-default col-md-3"
+        style="background-color:#333; color:#9d9d9d;" />*@
+            <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;">Comments</button>
+            <input type="button" value="Like @Model.Like" class="btn btn-default col-md-3"
+                   style="background-color:#333; color:#9d9d9d;" onclick="location.href='@Url.Action("Like", "Idea",new { id =Model.IdeaId })'" />
+            @*<button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;" onclick="click() value="click">Like @Model.Like</button>*@
+            @*<input type="button" value="Unlike @Model.Dislike" class="btn btn-default col-md-3"
+        style="background-color:#333; color:#9d9d9d;" />*@
+            <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;" onclick="location.href='@Url.Action("DisLike", "Idea",new { id =Model.IdeaId })'">Unlike @Model.Dislike</button>
         </div>
         <div class="detailDiscription col-md-12"
              style="border:1px solid gray; height:250px;">
@@ -125,3 +130,19 @@
             </div>
         </div>
 
+        <br /><br /><br /><br /><br /> <br /><br />
+
+        @Html.ActionLink("Your Feedback", "AddReply", new { id = Model.IdeaId })
+
+        <h1>Feedback from People</h1>
+
+        @foreach (var item in Model.Replies)
+        {
+            <h4>By: @item.UserName</h4>
+            <h5>Message: @item.message</h5>
+            <pre>     @Html.ActionLink("Reply", "AddReplyReply", new { id1 = item.ReplyId, id2 = Model.IdeaId })</pre>
+            foreach (var i in item.ReplyReplies)
+            {
+                <pre>         <span>Replies: </span> @i.message</pre>
+            }
+        }

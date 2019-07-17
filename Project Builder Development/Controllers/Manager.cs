@@ -11,8 +11,10 @@ namespace Project_Builder_Development.Controllers
     public class Manager
     {
         public int RoleId = 0;
+        public int ReactId = 1;
         // Reference to the data context
         private ApplicationDbContext ds = new ApplicationDbContext();
+        private ApplicationDbContext ds1 = new ApplicationDbContext();
 
         // AutoMapper instance
         public IMapper mapper;
@@ -104,6 +106,69 @@ namespace Project_Builder_Development.Controllers
 
 
             return addedIdea == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(addedIdea);
+        }
+
+        public void Like(int id, React obj) {
+
+            var idea = ds1.Ideas.Include("Reacts").SingleOrDefault(e => id == e.IdeaId);
+            obj.IdeasId = id;
+            obj.like = false;
+            obj.dislike = false;
+
+            AddReact(obj);
+
+            foreach (var item in idea.Reacts) {
+                if(obj.user == item.user){
+                    if (item.like == false) {
+                        idea.Like += 1;
+                        item.dislike = true;
+                        item.like = true;
+                    }
+                }
+            }
+            ds1.SaveChanges();
+        }
+
+        public void DisLike(int id, React obj){
+
+            var idea = ds1.Ideas.Include("Reacts").SingleOrDefault(e => id == e.IdeaId);
+            obj.IdeasId = id;
+            obj.like = false;
+            obj.dislike = false;
+
+            AddReact(obj);
+
+            foreach (var item in idea.Reacts)
+            {
+                if (obj.user == item.user)
+                {
+                    if (item.dislike == false)
+                    {
+                        idea.Dislike += 1;
+                        item.like = true;
+                        item.dislike = true;
+                    }
+                }
+            }
+
+            ds1.SaveChanges();
+
+        }
+
+        // Add React
+
+        public void AddReact(React obj) {
+
+            var idea = ds1.Ideas.Find(obj.IdeasId);
+            var check = ds.Reacts.SingleOrDefault(e => obj.user  == e.user && obj.IdeasId == e.IdeasId);
+
+            if (check == null)
+            {
+                idea.Reacts.Add(obj);
+            }
+
+            ds1.SaveChanges();
+            ds.SaveChanges();
         }
 
         // Category Functions
