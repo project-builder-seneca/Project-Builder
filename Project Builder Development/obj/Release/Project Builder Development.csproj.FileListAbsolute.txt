@@ -467,21 +467,9 @@ C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Bu
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\bin\Microsoft.AspNet.Identity.Owin.xml
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\bin\Microsoft.AspNet.Identity.EntityFramework.xml
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.csprojAssemblyReference.cache
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.initial.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedRoleClaimClass.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.csproj.GenerateResource.cache
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.csproj.CoreCompileInputs.cache
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.csproj.CopyComplete
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.dll
 C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.pdb
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedReplyClass.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedReply1Class.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.deleteReplyobjects.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedReply2Class.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedReply3Class.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.AddedReply4Class.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.test.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.test1.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.Corrections.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.Corrections1.resources
-C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.Corrections2.resources
+C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project_Builder_Development.Migrations.initial.resources
+C:\Users\owner\Desktop\Project-Builder\second Version\Project-Builder\Project Builder Development\obj\Release\Project Builder Development.csproj.GenerateResource.cache

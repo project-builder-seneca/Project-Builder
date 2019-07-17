@@ -55,6 +55,13 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Reply")]
         public ICollection<Reply> Replies { get; set; }
 
+        [Display(Name = "Like: ")]
+        public int Like { get; set; }
+
+        [Display(Name = "Dislike: ")]
+        public int Dislike { get; set; }
+
+        public ICollection<React> Reacts { get; set; }
     }
 
     public class Category
@@ -138,5 +145,24 @@ namespace Project_Builder_Development.Models
 
         [Required]
         public int IdeaId { get; set; }
+    }
+
+    public class React
+    {
+
+        [Key]
+        [Required]
+        [Display(Name = "Id")]
+        public int ReactId { get; set; }
+
+        [Required]
+        [Display(Name = "User: ")]
+        public string user { get; set; }
+
+        public bool like { get; set; }
+
+        public bool dislike { get; set; }
+
+        public int IdeasId { get; set; }
     }
 }

@@ -63,6 +63,7 @@ namespace Project_Builder_Development.Controllers
         // Reply 
 
         [Route("Idea/{id}/addreply")]
+        [Authorize]
         public ActionResult AddReply(int Id)
         {
             var obj = new ReplyBaseViewModel();
@@ -73,6 +74,7 @@ namespace Project_Builder_Development.Controllers
 
         [Route("Idea/{id}/addreply")]
         [HttpPost]
+        [Authorize]
         public ActionResult AddReply(ReplyBaseViewModel newReply)
         {
             newReply.ReplyId = ReplyId;
@@ -89,6 +91,7 @@ namespace Project_Builder_Development.Controllers
         }
 
         [Route("Idea/{id}/reply")]
+        [Authorize]
         public ActionResult AddReplyReply(int id1, int id2)
         {
             var obj = new ReplyReplyBaseViewModel();
@@ -99,6 +102,7 @@ namespace Project_Builder_Development.Controllers
 
         [Route("Idea/{id}/reply")]
         [HttpPost]
+        [Authorize]
         public ActionResult AddReplyReply(ReplyReplyBaseViewModel newReply)
         {
             newReply.ReplyId = ReplyReplyId;
@@ -113,7 +117,29 @@ namespace Project_Builder_Development.Controllers
                 return RedirectToAction("../Idea/IdeaDetails", new { id = addedReply.IdeaId });
             }
         }
-        
+
+        [Authorize]
+        public ActionResult Like(int ID) {
+
+            var obj = new React();
+            obj.user = HttpContext.User.Identity.Name;
+
+            m.Like(ID, obj);
+
+            return RedirectToAction("../Idea/IdeaDetails", new { id = ID });
+        }
+
+        [Authorize]
+        public ActionResult DisLike(int ID)
+        {
+            var obj = new React();
+            obj.user = HttpContext.User.Identity.Name;
+
+            m.DisLike(ID, obj);
+
+            return RedirectToAction("../Idea/IdeaDetails", new { id = ID });
+        }
+
         // GET: Idea/Edit/5
         public ActionResult Edit(int id)
         {

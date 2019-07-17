@@ -51,6 +51,12 @@ namespace Project_Builder_Development.Models
 
         [Display(Name = "Reply")]
         public IEnumerable<ReplyBaseViewModel> Replies { get; set; }
+
+        [Display(Name = "Like: ")]
+        public int Like { get; set; }
+
+        [Display(Name = "Dislike: ")]
+        public int Dislike { get; set; }
     }
 
     public class IdeaFormViewModel : IdeaBaseViewModel{
