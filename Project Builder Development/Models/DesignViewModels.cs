@@ -12,6 +12,9 @@ namespace Project_Builder_Development.Models
             PatSkills = new List<Skill>();
             VolSkills = new List<Skill>();
             Replies = new List<Reply>();
+            PatUserNames = new List<UserName>();
+            VolUserNames = new List<UserName>();
+            InvestUserNames = new List<UserName>();
         }
 
         [Required]
@@ -62,6 +65,12 @@ namespace Project_Builder_Development.Models
         public int Dislike { get; set; }
 
         public ICollection<React> Reacts { get; set; }
+
+        public ICollection<UserName> PatUserNames { get; set; }
+
+        public ICollection<UserName> VolUserNames { get; set; }
+
+        public ICollection<UserName> InvestUserNames { get; set; }
     }
 
     public class Category
@@ -107,7 +116,7 @@ namespace Project_Builder_Development.Models
     {
         public Reply() {
             ReplyReplies = new List<ReplyReply>();
-        }   
+        }
 
         [Required]
         [Display(Name = "Id: ")]
@@ -165,4 +174,37 @@ namespace Project_Builder_Development.Models
 
         public int IdeasId { get; set; }
     }
+
+    public class UserName{
+        [Key]
+        [Required]
+        public int UserId { get; set; } 
+        
+        [Required]
+        public string Name { get; set; }
+    }
+
+    public class Request {
+        [Required]
+        [Key]
+        public int RequestId { get; set; }
+
+        public string Message { get; set; }
+
+        [Required]
+        public Idea Ideas { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
+
+        [Required]
+        public int IdeaId { get; set; }
+
+        public bool Patner { get; set; }
+
+        public bool Volunteer { get; set; }
+
+        public bool Investor { get; set; }
+    }
+
 }

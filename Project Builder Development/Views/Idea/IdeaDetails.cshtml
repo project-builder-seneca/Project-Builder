@@ -1,6 +1,8 @@
 ﻿@model Project_Builder_Development.Models.IdeaBaseViewModel
 
 @{
+    /**/
+
     ViewBag.Title = "IdeaDetails";
 }
 
@@ -38,16 +40,16 @@
         <div class="buttons col-md-12"
              style="padding-left:0; padding-right:0;">
             @*<input type="button" value="About" class="btn btn-default col-md-3"
-        style="background-color:#333; color:#9d9d9d;" />*@
+                style="background-color:#333; color:#9d9d9d;" />*@
             <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;">About</button>
             @*<input type="button" value="Comments" class="btn btn-default col-md-3"
-        style="background-color:#333; color:#9d9d9d;" />*@
+                style="background-color:#333; color:#9d9d9d;" />*@
             <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;">Comments</button>
             <input type="button" value="Like @Model.Like" class="btn btn-default col-md-3"
                    style="background-color:#333; color:#9d9d9d;" onclick="location.href='@Url.Action("Like", "Idea",new { id =Model.IdeaId })'" />
             @*<button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;" onclick="click() value="click">Like @Model.Like</button>*@
             @*<input type="button" value="Unlike @Model.Dislike" class="btn btn-default col-md-3"
-        style="background-color:#333; color:#9d9d9d;" />*@
+                style="background-color:#333; color:#9d9d9d;" />*@
             <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;" onclick="location.href='@Url.Action("DisLike", "Idea",new { id =Model.IdeaId })'">Unlike @Model.Dislike</button>
         </div>
         <div class="detailDiscription col-md-12"
@@ -132,8 +134,41 @@
 
         <br /><br /><br /><br /><br /> <br /><br />
 
-        @Html.ActionLink("Your Feedback", "AddReply", new { id = Model.IdeaId })
+        <h4>Patners: </h4>
+        @if (Model.PatUserNames != null)
+        {
+            foreach (var item in Model.PatUserNames)
+            {
+                <strong><mark>@item.Name</mark></strong>
+            }
+        }
 
+        <h4>Volunteers: </h4>
+        @if (Model.VolUserNames != null)
+        {
+            foreach (var item in Model.VolUserNames)
+            {
+                <strong><mark>@item.Name</mark></strong>
+            }
+        }
+
+        <h4>Investors: </h4>
+        @if (Model.InvestUserNames != null)
+        {
+            foreach (var item in Model.InvestUserNames)
+            {
+                <strong><mark>@item.Name</mark></strong>
+            }
+        }
+
+
+        <br /><br /> <br /><br />
+
+        @Html.ActionLink("Your Feedback", "AddReply", new { id = Model.IdeaId })
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        @if (Model.Owner != User.Identity.Name) { 
+            @Html.ActionLink("Send Request", "AddRequest", new { id = Model.IdeaId })
+        }
         <h1>Feedback from People</h1>
 
         @foreach (var item in Model.Replies)

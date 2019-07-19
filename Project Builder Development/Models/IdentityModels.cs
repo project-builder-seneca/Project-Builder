@@ -32,6 +32,8 @@ namespace Project_Builder_Development.Models
         public virtual DbSet<Reply> Replies { get; set; }
         public virtual DbSet<ReplyReply> ReplyReplies { get; set; }
         public virtual DbSet<React> Reacts { get; set; }
+        public virtual DbSet<UserName> UserNames { get; set; } 
+        public virtual DbSet<Request> Requests { get; set; }
 
         // Turn OFF cascade delete, which is (unfortunately) the default setting
         // for Code First generated databases
