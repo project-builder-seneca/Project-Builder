@@ -31,7 +31,7 @@ namespace Project_Builder_Development.Controllers
                 // cfg.CreateMap<Employee, EmployeeBase>();
 
                 // Idea Maps
-
+                
                 // Category Maps
 
                 cfg.CreateMap<Category,CategoryBaseViewModel>();
@@ -57,6 +57,10 @@ namespace Project_Builder_Development.Controllers
                 cfg.CreateMap<ReplyReply, ReplyReplyBaseViewModel>();
                 cfg.CreateMap<ReplyReplyBaseViewModel,ReplyReply>();
 
+                //Request
+                cfg.CreateMap<Request, RequestBaseViewModel>();
+                cfg.CreateMap<RequestBaseViewModel, Request>();
+
             });
 
             mapper = config.CreateMapper();
@@ -70,7 +74,6 @@ namespace Project_Builder_Development.Controllers
             ds.Configuration.LazyLoadingEnabled = false;
         }
 
-
         // Idea Functions...
 
         public IEnumerable<IdeaBaseViewModel> GetAllIdeas()
@@ -80,7 +83,7 @@ namespace Project_Builder_Development.Controllers
 
         public IdeaBaseViewModel GetOneIdea(int? id)
         {
-            var obj = ds.Ideas.Include("VolSkills").Include("PatSkills").Include("Category").Include("Replies").Include("Replies.ReplyReplies").SingleOrDefault(i => id == i.IdeaId);
+            var obj = ds.Ideas.Include("VolSkills").Include("PatSkills").Include("PatUserNames").Include("VolUserNames").Include("InvestUserNames").Include("Category").Include("Replies").Include("Replies.ReplyReplies").SingleOrDefault(i => id == i.IdeaId);
             return obj == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(obj);
         }
 
@@ -169,6 +172,81 @@ namespace Project_Builder_Development.Controllers
 
             ds1.SaveChanges();
             ds.SaveChanges();
+        }
+
+        // Add Request
+
+        public RequestBaseViewModel AddRequest(RequestBaseViewModel newRequest) {
+
+            var addedRequest = ds.Requests.Add(mapper.Map<RequestBaseViewModel,Request>(newRequest));
+            var idea = ds.Ideas.Find(newRequest.IdeaId);
+            addedRequest.Ideas = idea;
+            ds.SaveChanges();
+            return addedRequest == null ? null : mapper.Map<Request,RequestBaseViewModel>(addedRequest);
+
+        }
+
+        public IEnumerable<RequestBaseViewModel> showRequest()
+        {
+            var obj = ds.Requests.Include("Ideas");
+            return obj == null ? null : mapper.Map<IEnumerable<Request>, IEnumerable<RequestBaseViewModel>>(obj);
+        }
+
+        public RequestBaseViewModel showOneRequest(int id) {
+            var obj = ds.Requests.Include("Ideas").SingleOrDefault(e => id == e.RequestId);
+            return obj == null ? null : mapper.Map<Request, RequestBaseViewModel>(obj);
+        }
+
+        public bool deleteRequest(int id) {
+
+            var deleteItem = ds.Requests.Find(id);
+
+            if (deleteItem == null)
+            {
+                return false;
+            }
+            else
+            {
+                ds.Requests.Remove(deleteItem);
+
+                ds.SaveChanges();
+
+                return true;
+            }
+        }
+
+        public UserName AddorFindUser(UserName newUser) {
+
+            var user = new UserName();
+
+            if (ds.UserNames.SingleOrDefault(e => newUser.Name == e.Name) == null)
+            {
+                user = ds.UserNames.Add(newUser);
+                ds.SaveChanges();
+                return user == null ? null : user;
+            }
+            else {
+                user = ds.UserNames.SingleOrDefault(e => newUser.Name == e.Name);
+                return user;
+            }
+        }
+
+        // Add a Patner, Vol, Invest in IDea
+
+        public void AddUserIdea(RequestBaseViewModel r, UserName u) {
+            var idea = ds.Ideas.Find(r.IdeaId);
+            if (r.Patner == true) {
+                idea.PatUserNames.Add(u);
+            }
+            if (r.Volunteer == true) {
+                idea.VolUserNames.Add(u);
+            }
+            if (r.Investor == true) {
+                idea.InvestUserNames.Add(u);
+            }
+            ds.SaveChanges();
+
+            deleteRequest(r.RequestId);
         }
 
         // Category Functions

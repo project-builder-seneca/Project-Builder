@@ -57,6 +57,12 @@ namespace Project_Builder_Development.Models
 
         [Display(Name = "Dislike: ")]
         public int Dislike { get; set; }
+
+        public IEnumerable<UserName> PatUserNames { get; set; }
+
+        public IEnumerable<UserName> VolUserNames { get; set; }
+
+        public IEnumerable<UserName> InvestUserNames { get; set; }
     }
 
     public class IdeaFormViewModel : IdeaBaseViewModel{
@@ -70,5 +76,29 @@ namespace Project_Builder_Development.Models
         public IEnumerable<int> PatSkillIds { get; set; }
         public IEnumerable<int> VolSkillIds { get; set; }
         public int CategoryId { get; set; }
+    }
+
+    public class RequestBaseViewModel
+    {
+        [Required]
+        [Key]
+        public int RequestId { get; set; }
+
+        public string Message { get; set; }
+
+        [Required]
+        public IdeaBaseViewModel Ideas { get; set; }
+
+        [Required]
+        public string UserName { get; set; }
+
+        [Required]
+        public int IdeaId { get; set; }
+
+        public bool Patner { get; set; }
+
+        public bool Volunteer { get; set; }
+
+        public bool Investor { get; set; }
     }
 }

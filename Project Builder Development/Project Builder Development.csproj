@@ -189,6 +189,7 @@
     <Compile Include="Controllers\IdeaController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\Manager.cs" />
+    <Compile Include="Controllers\RequestController.cs" />
     <Compile Include="Controllers\SkillCategoryController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -196,6 +197,26 @@
     <Compile Include="Migrations\201907170212144_initial.cs" />
     <Compile Include="Migrations\201907170212144_initial.Designer.cs">
       <DependentUpon>201907170212144_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181854280_added UserName class for adding Patners, Vol, Investors in the Ideas.cs" />
+    <Compile Include="Migrations\201907181854280_added UserName class for adding Patners, Vol, Investors in the Ideas.Designer.cs">
+      <DependentUpon>201907181854280_added UserName class for adding Patners, Vol, Investors in the Ideas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907181922049_added Request Class.cs" />
+    <Compile Include="Migrations\201907181922049_added Request Class.Designer.cs">
+      <DependentUpon>201907181922049_added Request Class.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907182023084_change column in Request table.cs" />
+    <Compile Include="Migrations\201907182023084_change column in Request table.Designer.cs">
+      <DependentUpon>201907182023084_change column in Request table.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907182053540_added IDeaID in Request.cs" />
+    <Compile Include="Migrations\201907182053540_added IDeaID in Request.Designer.cs">
+      <DependentUpon>201907182053540_added IDeaID in Request.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907182231040_added Pat Vol Invest in Request.cs" />
+    <Compile Include="Migrations\201907182231040_added Pat Vol Invest in Request.Designer.cs">
+      <DependentUpon>201907182231040_added Pat Vol Invest in Request.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -286,15 +307,20 @@
     <Content Include="Views\SkillCategory\AddSkill.cshtml" />
     <Content Include="Views\SkillCategory\AddCategory.cshtml" />
     <Content Include="Views\Idea\Ideas.cshtml" />
-    <Content Include="Views\Idea\IdeaDetails.cshtml" />
     <Content Include="Views\Idea\AddIdea.cshtml" />
     <Content Include="Views\Home\RegisterComplete.html" />
     <Content Include="Views\Idea\AddReply.cshtml" />
     <Content Include="Views\Idea\AddReplyReply.cshtml" />
+    <Content Include="Views\Idea\AddRequest.cshtml" />
+    <Content Include="Views\Request\Index.cshtml" />
+    <Content Include="Views\Request\Details.cshtml" />
+    <Content Include="Views\Request\Delete.cshtml" />
+    <Content Include="Views\Request\RequestsOnIdea.cshtml" />
+    <Content Include="Views\Idea\IdeaDetails.cshtml" />
+    <Content Include="Views\Request\Details1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Reply\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -310,6 +336,21 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907170212144_initial.resx">
       <DependentUpon>201907170212144_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181854280_added UserName class for adding Patners, Vol, Investors in the Ideas.resx">
+      <DependentUpon>201907181854280_added UserName class for adding Patners, Vol, Investors in the Ideas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181922049_added Request Class.resx">
+      <DependentUpon>201907181922049_added Request Class.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907182023084_change column in Request table.resx">
+      <DependentUpon>201907182023084_change column in Request table.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907182053540_added IDeaID in Request.resx">
+      <DependentUpon>201907182053540_added IDeaID in Request.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907182231040_added Pat Vol Invest in Request.resx">
+      <DependentUpon>201907182231040_added Pat Vol Invest in Request.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

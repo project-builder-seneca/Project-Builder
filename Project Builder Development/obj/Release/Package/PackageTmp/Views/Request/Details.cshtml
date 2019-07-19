@@ -1,0 +1,55 @@
+﻿@model Project_Builder_Development.Models.RequestBaseViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details of your Request on Idea - <mark>@Model.Ideas.Title</mark></h2>
+
+<strong><mark>//Request should be editable</mark></strong>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Your Message
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <br />
+        <dt>
+            <strong>Join as:</strong>
+        </dt>
+        <dd>
+            @if (Model.Patner == true)
+            {
+                <Strong>Patner</Strong>
+            }
+            @if (Model.Investor == true)
+            {
+                <Strong>Investor</Strong>
+            }
+            @if (Model.Volunteer == true)
+            {
+                <Strong>Volunteer</Strong>
+            }
+            @if (Model.Patner == false && Model.Volunteer == false && Model.Investor == false)
+            {
+                <Strong>Nothing Selected!</Strong>
+            }
+        </dd>
+        <br />
+        <dt>
+            Go to Idea here
+        </dt>
+        &nbsp;&nbsp;&nbsp; @Html.ActionLink("Link to the Idea", "../Idea/IdeaDetails", new { id = Model.IdeaId })
+    </dl>
+</div>
+
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("Delete", "Delete", new { id = Model.RequestId }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("Back to List", "Index")
+</p>

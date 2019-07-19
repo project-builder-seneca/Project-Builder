@@ -1,6 +1,7 @@
 ﻿using Project_Builder_Development.Models;
 using System;
 using System.Collections.Generic;
+using System.Dynamic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -12,9 +13,12 @@ namespace Project_Builder_Development.Controllers
         public int IdeaId = 1;
         public int ReplyId = 1;
         public int ReplyReplyId = 1;
+        public int RequestId = 1;
+        public int UserId = 1;
+
         Manager m = new Manager();
         // GET: Idea
-        
+
         public ActionResult Ideas()
         {
             return View(m.GetAllIdeas());
@@ -117,6 +121,65 @@ namespace Project_Builder_Development.Controllers
                 return RedirectToAction("../Idea/IdeaDetails", new { id = addedReply.IdeaId });
             }
         }
+
+        [Route("Idea/{id}/AddRequest")]
+        [Authorize]
+        public ActionResult AddRequest(int Id)
+        {
+            var obj = new RequestBaseViewModel();
+
+            obj.UserName = HttpContext.User.Identity.Name;
+            obj.RequestId = RequestId++;
+            var idea = m.GetOneIdea(Id);
+            obj.Ideas = idea;
+            obj.IdeaId = Id;
+            obj.Patner = false;
+            obj.Volunteer = false;
+            obj.Investor = false;
+
+            return View(obj);
+        }
+
+        [Route("Idea/{id}/AddRequest")]
+        [HttpPost]
+        [Authorize]
+        public ActionResult AddRequest(RequestBaseViewModel newRequest)
+        {
+            bool check = false;
+            var req = m.showRequest();
+            var index = 0;
+
+            var addedRequest = new RequestBaseViewModel();
+
+            foreach (var item in req) {
+                if (item.UserName == newRequest.UserName && item.IdeaId == newRequest.IdeaId)
+                {
+                    ViewBag.ErrorMessage = "You have already sent a request to this Idea before!";
+                    index = item.RequestId;
+                    check = true;
+                }
+            }
+            if(check == false) {
+                addedRequest = m.AddRequest(newRequest);
+            }
+
+            if (addedRequest == null)
+            {
+                newRequest = m.showOneRequest(index);
+                return View(newRequest);
+            }
+            else
+            {
+                if (check == true) {
+                    newRequest = m.showOneRequest(index);
+                    return View(newRequest);
+                } else { 
+                return RedirectToAction("../Idea/IdeaDetails", new { id = newRequest.IdeaId });
+                }
+            }
+        }
+
+
 
         [Authorize]
         public ActionResult Like(int ID) {

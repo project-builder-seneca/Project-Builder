@@ -1,0 +1,61 @@
+﻿@model Project_Builder_Development.Models.RequestBaseViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2><mark>@Model.UserName</mark> requested to be part of your Idea - <mark>@Model.Ideas.Title</mark></h2>
+
+
+<h3><mark>//After Adding, a notification must be sent!</mark></h3>
+
+<div>
+
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Message)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Message)
+        </dd>
+        <br />
+        <dt><strong><mark>Will show link to the requestor's profile</mark></strong></dt>
+        <dd></dd>
+        <br />
+        <dt>
+            <strong>@Model.UserName wants to join as:</strong>
+        </dt>
+        <dd>
+            @if (Model.Patner == true)
+            {
+                <Strong>Patner</Strong>
+            }
+            @if (Model.Investor == true)
+            {
+                <Strong>Investor</Strong>
+            }
+            @if (Model.Volunteer == true)
+            {
+                <Strong>Volunteer</Strong>
+            }
+            @if (Model.Patner == false && Model.Volunteer == false && Model.Investor == false)
+            {
+                <Strong>Nothing Selected!</Strong>
+            }
+        </dd>
+        <br />
+        <dt>
+            Visit your Idea here:
+        </dt>
+        &nbsp;&nbsp;&nbsp; @Html.ActionLink("Link to the Idea", "../Idea/IdeaDetails", new { id = Model.IdeaId })
+    </dl>
+</div>
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <strong>@Html.ActionLink("Add Member", "AddMember", new { id = Model.RequestId })</strong>
+<br /><br />
+<p>
+    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;@Html.ActionLink("Delete", "Delete", new { id = Model.RequestId }) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    @Html.ActionLink("Back to List", "Index")
+</p>
