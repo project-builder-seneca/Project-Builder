@@ -1,89 +1,132 @@
 ﻿@{
     ViewBag.Title = "Home Page";
-    string categorySelected = null;
-
 }
+<style>
+    .itContainer {
+        display: flex;
+        top: 200px;
+        height: 300px;
+        position: absolute;
+        width: auto;
+    }
 
-    <div class="category">
-        <div class="links">
-            <ul>
-                @foreach (var items in Model.Categories)
-                {
-                    <li>
-                        <a href="#">@items.Name</a>
-                    </li>
-                }
-            </ul>
-        </div>
-    </div>
+    .title p {
+        text-align: center;
+        border: groove;
+        width: 100%;
+    }
 
-<div class="row">
-    <div class="col-md-4">
-        @* @if (categorySelected == null)
-        {
-            <br /><br /><br />
-            <h4 style="padding-left:120px">Please choose one of the Category above to see the related Ideas! <mark>(Feauture comming soon)</mark></h4>
-        }
-        else if (categorySelected == "IT")
-        {
-            <p>I am at IT</p>
-        }
-        else if (categorySelected == "Business")
-        {
-            <p>I am at Business</p>
-        }
-        else if (categorySelected == "Other")
-        {
-            <p>I am at Others</p>
-        }*@
-        <table class="table">
-            <tr>
-                <th>
-                    Idea ID
-                </th>
-                <th>
-                    Title
-                </th>
-                <th>
-                    InvestmentGoal
-                </th>
-                <th>
-                    PartnersRequired
-                </th>
-                <th>
-                    VolunteersRequired
-                </th>
-                <th></th>
-            </tr>
+    .rows {
+        margin: 10px;
+        border: 1px solid grey;
+        border-radius: 10px;
+        width: 200px;
+    }
 
-            @foreach (var item in Model.Ideas)
+    .rows p {
+        margin-right: 10px;
+    }
+
+    .images {
+        height: 100px;
+        border-radius: 10px;
+        text-align: center;
+        width: 100%
+    }
+</style>
+<div class="category">
+    <div class="links">
+        <ul class="cat-links">
+            @foreach (var items in Model.Categories)
             {
-                <tr>
-                    <td>
-                        @item.IdeaId
-                    </td>
-                    <td>
-                        @item.Title
-                    </td>
-                    <td>
-                        @item.InvestmentGoal
-                    </td>
-                    <td>
-                        @item.PartnersRequired
-                    </td>
-                    <td>
-                        @item.VolunteersRequired
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-                        @Html.ActionLink("Details", "IdeaDetails", new { id = item.IdeaId }) |
-                        @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
-                    </td>
-                </tr>
+                <li id="cat-@items.Name">
+                    <a href="#" id="categoryLinks" onclick="document.getElementById('allIdeas').style.display='none';">@items.Name</a>
+                </li>
             }
-
-        </table>
-
-        
+        </ul>
     </div>
 </div>
+<div id="demo">
+
+</div>
+
+<script type="text/javascript">
+    let catRefs = document.querySelectorAll("ul.cat-links > li");
+
+    for (let i = 0; i < catRefs.length; i++) {
+        catRefs[i].addEventListener('click', function(){
+           handleCatOnClick(catRefs[i].id);
+        });
+    }
+
+    let modelIdeas = @Html.Raw(Json.Encode(Model.Ideas));
+    let ActIdeas = []
+    let TechIdeas = []
+    let FoodIdeas = []
+    let GameIdeas = []
+    let MusicIdeas = []
+
+    for (i in modelIdeas) {
+        switch (modelIdeas[i].Category.Name) {
+            case "ACT":
+                ActIdeas.push(modelIdeas[i]);
+                break;
+            case "TECH":
+                TechIdeas.push(modelIdeas[i]);
+                break;
+            case "FOOD":
+                FoodIdeas.push(modelIdeas[i]);
+                break;
+            case "GAME":
+                GameIdeas.push(modelIdeas[i]);
+                break;
+            case "MUSIC":
+                MusicIdeas.push(modelIdeas[i]);
+                break;
+            default:
+                break;
+        }
+    }
+
+    document.getElementById("demo").innerHTML = ideasTemplate(modelIdeas);
+
+    function handleCatOnClick(type) {
+        switch (type) {
+            case "cat-ACT":
+                document.getElementById("demo").innerHTML = ideasTemplate(ActIdeas);
+                break;
+            case "cat-TECH":
+                document.getElementById("demo").innerHTML = ideasTemplate(TechIdeas);
+                break;
+            case "cat-FOOD":
+                document.getElementById("demo").innerHTML = ideasTemplate(FoodIdeas);
+                break;
+            case "cat-GAME":
+                document.getElementById("demo").innerHTML = ideasTemplate(GameIdeas);
+                break;
+            case "cat-MUSIC":
+                document.getElementById("demo").innerHTML = ideasTemplate(MusicIdeas);
+                break
+            default:
+                break;
+        }
+    }
+
+    function ideasTemplate(data) {
+        let rc = ""
+        for (i in data) {
+            rc +=
+                "<div class='rows'>" +
+                    "<div class='images'>" +
+                        "<img src='../images/Performance-managment-process-feature-180x180.gif'  height='100px' width='100px'>" +
+                    "</div>" +
+                    "<div class='title'>" +
+                        "<p>" + data[i].Title + "</p>" +
+                        "<p>" + data[i].Description + "</p>" +
+                        "<p> UserID: <br>" + data[i].Owner + "</p>" +
+                    "</div>" +
+                "</div>";
+        }
+        return "<div class='itContainer'>" + rc + "</div>";
+    }
+</script>
