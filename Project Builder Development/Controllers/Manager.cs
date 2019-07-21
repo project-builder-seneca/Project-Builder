@@ -4,7 +4,7 @@ using System.Linq;
 using AutoMapper;
 using System.Web;
 using Project_Builder_Development.Models;
-using Microsoft.AspNet.Identity.EntityFramework;
+
 
 namespace Project_Builder_Development.Controllers
 {
@@ -48,6 +48,7 @@ namespace Project_Builder_Development.Controllers
 
                 //Register
                 cfg.CreateMap<RegisterViewModel, RegisterFormViewModel>();
+                cfg.CreateMap<RegisterViewModel, RegisterEdit>();
 
                 //Reply
                 cfg.CreateMap<Reply,ReplyBaseViewModel>();
@@ -73,6 +74,17 @@ namespace Project_Builder_Development.Controllers
             // We want to retain control over fetching related objects
             ds.Configuration.LazyLoadingEnabled = false;
         }
+
+        //Mypage/Project
+
+        public IEnumerable<IdeaBaseViewModel> GetAllProject(string id)
+        {
+            //var obj = ds.Ideas.Where(i => id == i.Owner);
+            var obj = ds.Ideas.Include("PatUserNames").Include("VolUserNames").Include("InvestUserNames").Where(i => id == i.Owner);
+            return mapper.Map<IEnumerable<Idea>, IEnumerable<IdeaBaseViewModel>>(obj.ToList());
+        }
+
+
 
         // Idea Functions...
 

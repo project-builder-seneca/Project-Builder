@@ -169,4 +169,43 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Email")]
         public string Email { get; set; }
     }
+
+    public class AccountDetails
+    {
+        [Display(Name = "User (login) name")]
+        public string UserName { get; set; }
+
+        [Display(Name = "Internal name")]
+        public string ClaimsName { get; set; }
+
+        [Display(Name = "Given (first) name(s)")]
+        public string ClaimsGivenName { get; set; }
+
+        [Display(Name = "Surname (family name)")]
+        public string ClaimsSurname { get; set; }
+
+        [Display(Name = "Email address")]
+        public string ClaimsEmail { get; set; }
+
+        [Display(Name = "Roles")]
+        public string ClaimsRoles { get; set; }
+    }
+
+    public class RegisterEdit
+    {
+        [Key]
+        public string UserId { get; set; }
+
+        public string UserName { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "First Name must be {2} to {0} characters long.", MinimumLength = 2)]
+        [Display(Name = "First Name")]
+        public string FirstName { get; set; }
+
+        [Required]
+        [StringLength(25, ErrorMessage = "Last Name must be atleast {2} characters long.", MinimumLength = 2)]
+        [Display(Name = "Last Name")]
+        public string LastName { get; set; }
+    }
 }

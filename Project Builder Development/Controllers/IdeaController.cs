@@ -246,5 +246,17 @@ namespace Project_Builder_Development.Controllers
                 return View();
             }
         }
+
+        //Get: /Idea/Project
+        public ActionResult Project()
+        {
+            // Create a view model object
+            var accountDetails = new AccountDetails();
+
+            // Identity object "name" (i.e. not the claim)
+            accountDetails.UserName = User.Identity.Name;
+
+            return View(m.GetAllProject(accountDetails.UserName));
+        }
     }
 }

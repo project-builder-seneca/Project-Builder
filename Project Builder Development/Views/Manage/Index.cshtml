@@ -8,8 +8,7 @@
 <p class="text-success">@ViewBag.StatusMessage</p>
 <div>
     <h4>Change your account settings</h4>
-    <h3>This will be our profile page for future put - (First Name, Last Name, Email Address, userName, [and anything what we will ask in future])</h3>
-    <hr />
+   <hr />
     <dl class="dl-horizontal">
         <dt>Password:</dt>
         <dd>
@@ -24,6 +23,38 @@
             }
             ]
         </dd>
-       
     </dl>
+
+    <dl class="dl-horizontal">
+        <dt>My account:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("My account", "Details", "Account")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+
+    <dl class="dl-horizontal">
+        <dt>Project Working / Worked on:</dt>
+        <dd>
+            [
+            @if (Model.HasPassword)
+            {
+                @Html.ActionLink("Project", "Project", "Idea")
+            }
+            else
+            {
+                @Html.ActionLink("Create", "SetPassword")
+            }
+            ]
+        </dd>
+    </dl>
+
 </div>

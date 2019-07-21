@@ -19,6 +19,7 @@ namespace Project_Builder_Development.Controllers
     {
 
         Manager m = new Manager();
+        private ApplicationDbContext ds = new ApplicationDbContext();
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
@@ -56,6 +57,93 @@ namespace Project_Builder_Development.Controllers
                 _userManager = value;
             }
         }
+
+        // GET: /Account/Details
+        public ActionResult RegisterEdit()
+        {
+            // Create a view model object
+            var registerEdit = new RegisterEdit();
+
+            // Identity object "name" (i.e. not the claim)
+           // registerEdit.UserName = User.Identity.Name;
+
+            // Work with the current User in claims-compatible mode
+            var identity = User.Identity as ClaimsIdentity;
+
+            // Now, go through the claims...
+
+           
+            // Get the name, if present
+            var userid = identity.FindFirst(ClaimTypes.NameIdentifier);
+            registerEdit.UserId = userid == null ? "(none)" : userid.Value;
+
+            // Get the name, if present
+            var name = identity.FindFirst(ClaimTypes.Name);
+            registerEdit.UserName = name == null ? "(none)" : name.Value;
+
+            // Get the given name, if present
+            var givenName = identity.FindFirst(ClaimTypes.GivenName);
+            registerEdit.FirstName = givenName == null ? "(none)" : givenName.Value;
+
+            // Get the surname, if present
+            var surname = identity.FindFirst(ClaimTypes.Surname);
+            registerEdit.LastName = surname == null ? "(none)" : surname.Value;
+
+
+            return View(registerEdit);
+        }
+
+        // POST: /Account/RegisterEdit
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> RegisterEdit(RegisterEdit model)
+        {
+
+                return RedirectToAction("Details");
+           
+        }
+
+
+        // GET: /Account/Details
+        public ActionResult Details()
+        {
+            // Create a view model object
+            var accountDetails = new AccountDetails();
+
+            // Identity object "name" (i.e. not the claim)
+            accountDetails.UserName = User.Identity.Name;
+
+            // Work with the current User in claims-compatible mode
+            var identity = User.Identity as ClaimsIdentity;
+
+            // Now, go through the claims...
+
+            // Get the name, if present
+            var name = identity.FindFirst(ClaimTypes.Name);
+            accountDetails.ClaimsName = name == null ? "(none)" : name.Value;
+
+            // Get the given name, if present
+            var givenName = identity.FindFirst(ClaimTypes.GivenName);
+            accountDetails.ClaimsGivenName = givenName == null ? "(none)" : givenName.Value;
+
+            // Get the surname, if present
+            var surname = identity.FindFirst(ClaimTypes.Surname);
+            accountDetails.ClaimsSurname = surname == null ? "(none)" : surname.Value;
+
+            // Get the email, if present
+            var email = identity.FindFirst(ClaimTypes.Email);
+            accountDetails.ClaimsEmail = email == null ? "(none)" : email.Value;
+
+            // Get the roles, if present
+            var roles = identity.FindAll(ClaimTypes.Role).Select(rn => rn.Value).ToArray();
+            accountDetails.ClaimsRoles = roles.Count() == 0 ? "(none)" : string.Join(", ", roles);
+
+
+
+            return View(accountDetails);
+        }
+
 
         //
         // GET: /Account/Login
@@ -201,6 +289,9 @@ namespace Project_Builder_Development.Controllers
 
                     await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Email, model.Email));
                     await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Role, "User"));
+                    await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.GivenName, model.FirstName));
+                    await UserManager.AddClaimAsync(user.Id, new Claim(ClaimTypes.Surname, model.LastName));
+
 
                     foreach (var role in model.Roles)
                     {
