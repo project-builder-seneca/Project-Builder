@@ -1,183 +1,163 @@
 ﻿@model Project_Builder_Development.Models.IdeaBaseViewModel
 
 @{
-    /**/
-
     ViewBag.Title = "IdeaDetails";
 }
-
-<h2>Idea Details</h2>
-<div class="container">
+<div class="">
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="left col-md-8"
-         style="padding-left:0; padding-right:0; height:600px;">
-        <div class="firstLine form-group">
-            <div class="col-md-2"
-                 style="border:1px solid gray; text-align:center; height: 30px">
-                @Html.DisplayFor(model => model.Owner)
-            </div>
-            <div class="col-md-2"
-                 style="border:1px solid gray; text-align:center; height:30px">
-                <p>2019-06-06</p>
-            </div>
-            <div class="col-md-2"
-                 style="border:1px solid gray; text-align:center; height:30px">
-                @Html.DisplayFor(model => model.Category.Name)
-            </div>
-            <div class="col-md-6"
-                 style="border:1px solid gray; text-align:center; height:30px">
-                @Html.DisplayFor(model => model.Title)
-            </div>
-        </div>
-        <div class="image col-md-12"
-             style="background-color:#333; text-align:center; height:300px;">
+    <div class="title" style="text-align: center">
+        <h1>@Html.DisplayFor(model => model.Title)</h1>
+    </div>
+
+    <div class="shortDesc" style="text-align: center">
+        <h4>short descrioption</h4>
+    </div>
+    <div class="row col-md-12">
+        <div class="col-md-8" style="background-color:#333; text-align:center; height:400px;">
             <h1 style="color: white;">Image</h1>
         </div>
-        <div class="discription col-md-12"
-             style="border:1px solid gray; height:100px;">
-            @Html.DisplayFor(model => model.Description)
-        </div>
-        <div class="buttons col-md-12"
-             style="padding-left:0; padding-right:0;">
-            @*<input type="button" value="About" class="btn btn-default col-md-3"
-                style="background-color:#333; color:#9d9d9d;" />*@
-            <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;">About</button>
-            @*<input type="button" value="Comments" class="btn btn-default col-md-3"
-                style="background-color:#333; color:#9d9d9d;" />*@
-            <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;">Comments</button>
-            <input type="button" value="Like @Model.Like" class="btn btn-default col-md-3"
-                   style="background-color:#333; color:#9d9d9d;" onclick="location.href='@Url.Action("Like", "Idea",new { id =Model.IdeaId })'" />
-            @*<button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;" onclick="click() value="click">Like @Model.Like</button>*@
-            @*<input type="button" value="Unlike @Model.Dislike" class="btn btn-default col-md-3"
-                style="background-color:#333; color:#9d9d9d;" />*@
-            <button class="btn btn-default col-md-3" style="background-color:#333; color:#9d9d9d;" onclick="location.href='@Url.Action("DisLike", "Idea",new { id =Model.IdeaId })'">Unlike @Model.Dislike</button>
-        </div>
-        <div class="detailDiscription col-md-12"
-             style="border:1px solid gray; height:250px;">
-            <p style="color:red">Date, buttons(About, Comments, Like, Unlike, Send request, and Edit), participants are not working now</p>
-        </div>
-    </div>
-    <div class="right col-md-4"
-         style="padding-left:0; padding-right:0; height:600px;">
-        <div class="requirementForm col-md-12"
-             style="border:1px solid gray; text-align:center; font-size:16px; height:30px;">
-            <p>Requirements</p>
-        </div>
-        <div class="header col-md-12"
-             style="padding-left:0; padding-right:0;">
-            <div class="col-md-3"
-                 style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Type</div>
-            <div class="col-md-3"
-                 style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Number</div>
-            <div class="col-md-6"
-                 style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Skills</div>
-        </div>
-        <div class="partner col-md-12"
-             style="height:185px; border:1px solid gray; text-align:center; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;">
-            <div class="col-md-3"
-                 style="text-align:center;">Partner</div>
-            <div class="col-md-3"
-                 style="text-align:center;">@Html.DisplayFor(model => model.PartnersRequired)</div>
-                <div class="col-md-6"
-                     style="text-align:center;">
+        <div class="col-md-4" style="padding-left:30px;">
+            <div>
+                <h3 class="text-info" style="text-align:center">Idea Information</h3>
+                <hr />
+                <div class="row">
+                    <div>
+                        <h5 class="col-md-6">Category</h5>
+                    </div>
+                    <div>
+                        <h5 class="col-md-6">@Html.DisplayFor(model => model.Category.Name)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <h5 class="col-md-6">Created by</h5>
+                    </div>
+                    <div>
+                        <h5 class="col-md-6">@Html.DisplayFor(model => model.Owner)</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div>
+                        <h5 class="col-md-6">Funding Goal</h5>
+                    </div>
+                    <div>
+                        <h5 class="col-md-6"><span>CA$ </span>@Html.DisplayFor(model => model.InvestmentGoal)</h5>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <h3 class="text-info" style="text-align:center">Requirements</h3>
+                <hr />
+            </div>
+            <div class="row">
+                <div class="col-md-3" style="text-align:center;">
+                    Partner
+                </div>
+                <div class="col-md-3" style="text-align:center;">
+                    @Html.DisplayFor(model => model.PartnersRequired)
+                </div>
+                <div class="col-md-6" style="text-align:center;">
                     @foreach (var items in @Model.PatSkills)
                     {
                         <span>@items.Name</span>
                     }
                 </div>
             </div>
-            <div class="volunteer col-md-12"
-                 style="height:185px; border:1px solid gray; text-align:center; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;">
-                <div class="col-md-3"
-                     style="text-align:center;">Volunteer</div>
-                <div class="col-md-3"
-                     style="text-align:center;">@Html.DisplayFor(model => model.VolunteersRequired)</div>
-                    <div class="col-md-6"
-                         style="text-align:center;">
-                        @foreach (var items in @Model.VolSkills)
-                        {
-                            <span>@items.Name</span>
-                        }
-                    </div>
+            <div class="row">
+                <div class="col-md-3" style="text-align:center;">
+                    Volunteer
                 </div>
-                <div class="buttons col-md-12"
-                     style="padding-left:0; padding-right:0;">
-                    <input type="button" value="Send request" class="btn btn-default col-md-12"
-                           style="max-width:100%; background-color:#333; color:#9d9d9d;" />
+                <div class="col-md-3" style="text-align:center;">
+                    @Html.DisplayFor(model => model.VolunteersRequired)
                 </div>
-                <div class="participantsForm col-md-12"
-                     style="border:1px solid gray; text-align:center; font-size:16px; height:30px;">
-                    <p>Participants</p>
+                <div class="col-md-6" style="text-align:center;">
+                    @foreach (var items in @Model.VolSkills)
+                    {
+                        <span>@items.Name</span>
+                    }
                 </div>
-                <div class="header col-md-12"
-                     style="padding-left:0; padding-right:0;">
-                    <div class="col-md-6"
-                         style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">User ID</div>
-                    <div class="col-md-6"
-                         style="text-align:center; border:1px solid gray; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0; height:30px">Posistion</div>
-                </div>
-                <div class="participants col-md-12"
-                     style="padding-left:0; padding-right:0;">
-                    <div class="col-md-6"
-                         style="border:1px solid gray; height:170px; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;"></div>
-                    <div class="col-md-6"
-                         style="border:1px solid gray; height:170px; padding-left:0; padding-right:0; padding-top:0; padding-bottom:0;"></div>
-                </div>
-                <p style="text-align:center">
-
-                    @Html.ActionLink("Edit", "Edit", new { id = Model.IdeaId }) |
-                    @Html.ActionLink("Back to List", "Ideas")
-
-                </p>
+            </div>
+            <div class="row" style="padding-left:0; padding-right:0; margin-top:15px">
+                <input type="button" value="Send Request" class="btn btn-default col-md-12"
+                       style="max-width:100%; background-color:#333; color:#ffffff;" />
+            </div>
+            <div class="row">
+                <button class="btn btn-default col-md-6" style="background-color:#333; color:#ffffff" onclick="location.href='@Url.Action("Like", "Idea",new { id =Model.IdeaId })'">like @Model.Like</button>
+                <button class="btn btn-default col-md-6" style="background-color:#333; color:#ffffff;" onclick="location.href='@Url.Action("DisLike", "Idea",new { id =Model.IdeaId })'">Unlike @Model.Dislike</button>
             </div>
         </div>
-
-        <br /><br /><br /><br /><br /> <br /><br />
-
-        <h4>Patners: </h4>
-        @if (Model.PatUserNames != null)
+    </div>
+    <div class="row col-md-12">
+        <div class="col-md-8">
+            <h2>@Html.DisplayFor(model => model.Description)</h2>
+        </div>
+        <div class="col-md-4">
+            <div>
+                <h3 class="text-info" style="text-align:center">Participants</h3>
+                <hr />
+            </div>
+            <div class="col-md-12" style="text-align:center;">
+                <div class="row">
+                    @if (Model.PatUserNames != null)
+                    {
+                        foreach (var item in Model.PatUserNames)
+                        {
+                            <div class="col-md-4">Patners:</div>
+                            <div class="col-md-8">@item.Name</div>
+                        }
+                    }
+                </div>
+                <div class="row">
+                    @if (Model.VolUserNames != null)
+                    {
+                        foreach (var item in Model.VolUserNames)
+                        {
+                            <div class="col-md-4">Volunteers: </div>
+                            <div class="col-md-8">@item.Name</div>
+                        }
+                    }
+                </div>
+                <div class="row">
+                    @if (Model.InvestUserNames != null)
+                    {
+                        foreach (var item in Model.InvestUserNames)
+                        {
+                            <div class="col-md-4">Investors: </div>
+                            <div class="col-md-8">@item.Name</div>
+                        }
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-12">
+        <hr />
+        <h3 class="text-info">Feedback from People</h3>
+        <div class="col-md-12">@Html.ActionLink("Leave Comment", "AddReply", new { id = Model.IdeaId })</div>
+        @if (Model.Owner != User.Identity.Name)
         {
-            foreach (var item in Model.PatUserNames)
-            {
-                <strong><mark>@item.Name</mark></strong>
-            }
-        }
-
-        <h4>Volunteers: </h4>
-        @if (Model.VolUserNames != null)
-        {
-            foreach (var item in Model.VolUserNames)
-            {
-                <strong><mark>@item.Name</mark></strong>
-            }
-        }
-
-        <h4>Investors: </h4>
-        @if (Model.InvestUserNames != null)
-        {
-            foreach (var item in Model.InvestUserNames)
-            {
-                <strong><mark>@item.Name</mark></strong>
-            }
-        }
-
-
-        <br /><br /> <br /><br />
-
-        @Html.ActionLink("Your Feedback", "AddReply", new { id = Model.IdeaId })
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        @if (Model.Owner != User.Identity.Name) { 
-            @Html.ActionLink("Send Request", "AddRequest", new { id = Model.IdeaId })
-        }
-        <h1>Feedback from People</h1>
+            <div class="col-md-12">
+                @Html.ActionLink("Send Request", "AddRequest", new { id = Model.IdeaId })
+            </div>
+         }
 
         @foreach (var item in Model.Replies)
         {
-            <h4>By: @item.UserName</h4>
-            <h5>Message: @item.message</h5>
-            <pre>     @Html.ActionLink("Reply", "AddReplyReply", new { id1 = item.ReplyId, id2 = Model.IdeaId })</pre>
+            <div class="form-row col-md-12">
+                <hr />
+                <div class="col-md-1">@item.UserName</div>
+                <div class="col-md-10">@item.message</div>
+                <div class="col-md-1 text-info">@Html.ActionLink("Reply", "AddReplyReply", new { id1 = item.ReplyId, id2 = Model.IdeaId })</div>
+            </div>
             foreach (var i in item.ReplyReplies)
             {
-                <pre>         <span>Replies: </span> @i.message</pre>
+                <div class="form-row col-md-12">
+                    <div class="col-md-1"></div>
+                    <div class="text-primary col-md-11">@i.message</div>
+                </div>
             }
-        }
+         }
+    </div>
+</div>
+
+

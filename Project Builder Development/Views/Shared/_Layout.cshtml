@@ -40,12 +40,15 @@
     <div class="container body-content">
         @RenderBody()
 
-        @*        <footer style="position: absolute; bottom: 0; width: inherit; height: 80px">
-             <hr/>
-            <p>&copy; @DateTime.Now.Year - Project Builder</p>
-        </footer>*@
+        @*<footer style="position: absolute; bottom: 0; width: inherit; height: 80px">
+                 <hr/>
+                <p>&copy; @DateTime.Now.Year - Project Builder</p>
+            </footer>*@
 
     </div>
+    @*<footer style="position:fixed; bottom: 0; width: 100%; height: 60px;padding:5px 10px; background-color:white; border-top:solid;">
+            <p>&copy; @DateTime.Now.Year - Project Builder</p>
+        </footer>*@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")

@@ -3,61 +3,58 @@
 @{
     ViewBag.Title = "Project Builder";
 }
-<div class="row"
-     style="padding-top:80px">
-    <div class="col-md-12">
-        <section id="loginForm">
-            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
-            {
-                @Html.AntiForgeryToken()
-                <div class="container"
-                     style="height: initial;">
-                    <div class="row"
-                         style="padding-top:80px">
-                        <div class="Absolute-Center is-Responsive"
-                             style="margin:auto; top:0; left:0; bottom:0; right:0; height:50%; padding:40px; min-width:200px; max-width:400px; padding:40px;">
-                            <div class="col-md-12">
-                                <div class="title"
-                                     style="display:flex; justify-content:center;">
-                                    <h3>SIGN IN</h3>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.UserId, "UserID", new { @class = "col-md-2 control-label" })
-                                    @Html.TextBoxFor(m => m.UserId, new { @class = "form-control form-control-lg" })
-                                    @Html.ValidationMessageFor(m => m.UserId, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.Password, "Password", new { @class = "col-md-2 control-label" })
-                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg" })
-                                    @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                                </div>
-                                <div class="checkbox-form">
-                                    <div class="col-md-offset-2 col-md-10">
-                                        <div class="checkbox">
-                                            @*@Html.CheckBoxFor(m => m.RememberMe)
-                                                @Html.LabelFor(m => m.RememberMe)*@
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="login-btn">
-                                    <input type="submit" value="Log in" class="btn btn-default"
-                                           style="width:100%; background-color:#333; color:#9d9d9d" />
-                                </div>
-                                <div class="form-group text-center">
-                                    @Html.ActionLink("Forgot password?", "ForgotPassword") <br />
-                                    @Html.ActionLink("New to ProjectBuilder? Sign up!", "Register")
-                                </div>
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                            </div>
+
+<section id="loginForm">
+    @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="container"
+             style="height: initial;">
+            <div class="row"
+                 style="padding-top:80px">
+                <div class="Absolute-Center is-Responsive"
+                     style="margin:auto; top:0; left:0; bottom:0; right:0; height:50%; padding:40px; min-width:200px; max-width:400px; padding:40px;">
+                    <div class="col-md-12">
+                        <div class="title"
+                             style="display:flex; justify-content:center;">
+                            <h3>SIGN IN</h3>
                         </div>
                     </div>
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.UserId, "UserID", new { @class = "col-md-2 control-label" })
+                            @Html.TextBoxFor(m => m.UserId, new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.UserId, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(m => m.Password, "Password", new { @class = "col-md-2 control-label" })
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg" })
+                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="checkbox-form">
+                            <div class="col-md-offset-2 col-md-10">
+                                <div class="checkbox">
+                                    @*@Html.CheckBoxFor(m => m.RememberMe)
+                                        @Html.LabelFor(m => m.RememberMe)*@
+                                </div>
+                            </div>
+                        </div>
+                        <div class="login-btn">
+                            <input type="submit" value="Log in" class="btn btn-default"
+                                   style="width:100%; background-color:#333; color:#ffffff" />
+                        </div>
+                        <div class="form-group text-center">
+                            @Html.ActionLink("Forgot password?", "ForgotPassword") <br />
+                            @Html.ActionLink("New to ProjectBuilder? Sign up!", "Register")
+                        </div>
+                        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                    </div>
                 </div>
-            }
-        </section>
-    </div>
-</div>
+            </div>
+        </div>
+    }
+</section>
+
 
 
 
