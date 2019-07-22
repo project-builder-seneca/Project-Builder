@@ -15,6 +15,7 @@ namespace Project_Builder_Development.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        Manager m = new Manager();
 
         public ManageController()
         {
@@ -49,6 +50,21 @@ namespace Project_Builder_Development.Controllers
                 _userManager = value;
             }
         }
+
+        //Get: /Manage/Project
+        public ActionResult Project()
+        {
+            // Create a view model object
+            var accountDetails = new AccountDetails();
+
+            // Identity object "name" (i.e. not the claim)
+            accountDetails.UserName = User.Identity.Name;
+
+            return View(m.GetAllProject(accountDetails.UserName));
+        }
+
+
+
 
         //
         // GET: /Manage/Index
