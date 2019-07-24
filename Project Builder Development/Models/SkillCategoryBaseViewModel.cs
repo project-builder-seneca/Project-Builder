@@ -18,6 +18,14 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Skill Name: ")]
         public string Name { get; set; }
 
+        public bool Patner { get; set; }
+
+        public bool Volunteer { get; set; }
+
+        public IEnumerable<TaskGiven> TasksGiven { get; set; }
+
+        public IEnumerable<Idea> Ideas { get; set; }
+
     }
 
     public class SkillAddViewModel : SkillBaseViewModel

@@ -9,7 +9,6 @@ namespace Project_Builder_Development.Controllers
 {
     public class RequestController : Controller
     {
-        public int UserID = 1;
         Manager m = new Manager();
         // GET: Request
         [Authorize]
@@ -61,7 +60,6 @@ namespace Project_Builder_Development.Controllers
             var IdeaId = obj.IdeaId;
 
             var user = new UserName();
-            user.UserId = UserID++;
             user.Name = obj.UserName;
 
             var addedUser = m.AddorFindUser(user);

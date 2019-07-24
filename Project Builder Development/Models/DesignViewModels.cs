@@ -9,12 +9,10 @@ namespace Project_Builder_Development.Models
     public class Idea {
 
         public Idea() {
-            PatSkills = new List<Skill>();
-            VolSkills = new List<Skill>();
+            Skills = new List<Skill>();
             Replies = new List<Reply>();
-            PatUserNames = new List<UserName>();
-            VolUserNames = new List<UserName>();
-            InvestUserNames = new List<UserName>();
+            Users = new List<UserName>();
+            Tasks = new List<TaskGiven>();
         }
 
         [Required]
@@ -46,14 +44,10 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Partners Required: ")]
         public int PartnersRequired { get; set; }
 
-        [Display(Name = "Skills Required for Partners: ")]
-        public ICollection<Skill> PatSkills { get; set; }
+        public ICollection<Skill> Skills { get; set; }
 
         [Display(Name = "Volunteers Required: ")]
         public int VolunteersRequired { get; set; }
-
-        [Display(Name = "Skills required for Volunteers: ")]
-        public ICollection<Skill> VolSkills { get; set; }
 
         [Display(Name = "Reply")]
         public ICollection<Reply> Replies { get; set; }
@@ -66,11 +60,9 @@ namespace Project_Builder_Development.Models
 
         public ICollection<React> Reacts { get; set; }
 
-        public ICollection<UserName> PatUserNames { get; set; }
+        public ICollection<UserName> Users { get; set; }
 
-        public ICollection<UserName> VolUserNames { get; set; }
-
-        public ICollection<UserName> InvestUserNames { get; set; }
+        public ICollection<TaskGiven> Tasks { get; set; }
     }
 
     public class Category
@@ -88,6 +80,10 @@ namespace Project_Builder_Development.Models
 
     public class Skill
     {
+        public Skill() {
+            TasksGiven = new List<TaskGiven>();
+            Ideas = new List<Idea>();
+        }
 
         [Required]
         [Display(Name = "Skill Id: ")]
@@ -97,6 +93,14 @@ namespace Project_Builder_Development.Models
         [StringLength(25, MinimumLength = 2)]
         [Display(Name = "Skill Name: ")]
         public string Name { get; set; }
+
+        public ICollection<Idea> Ideas { get; set; }
+
+        public bool Patner { get; set; }
+
+        public bool Volunteer { get; set; }
+
+        public ICollection<TaskGiven> TasksGiven { get; set; }
 
     }
 
@@ -175,13 +179,29 @@ namespace Project_Builder_Development.Models
         public int IdeasId { get; set; }
     }
 
-    public class UserName{
+    public class UserName {
+
+        public UserName(){
+            TasksGiven = new List<TaskGiven>();
+            Ideas = new List<Idea>();
+        }
+
         [Key]
         [Required]
         public int UserId { get; set; } 
         
         [Required]
         public string Name { get; set; }
+
+        public bool Patner { get; set; }
+
+        public bool Volunteer { get; set; }
+
+        public bool Investor { get; set; }
+
+        public ICollection<Idea> Ideas { get; set; }
+
+        public ICollection<TaskGiven> TasksGiven { get; set; }
     }
 
     public class Request {
@@ -207,4 +227,30 @@ namespace Project_Builder_Development.Models
         public bool Investor { get; set; }
     }
 
+    public class TaskGiven {
+
+        public TaskGiven() {
+            AssignedTo = new List<UserName>();
+            Skills = new List<Skill>();
+        }
+
+        [Required]
+        [Key]
+        public int TaskId { get; set; }
+
+        [Required]
+        public string TaskName { get; set; }
+
+        public ICollection<UserName> AssignedTo { get; set; }
+
+        public DateTime TargetDate { get; set; }
+
+        public ICollection<Skill> Skills { get; set; }
+
+        [Required]
+        public string description { get; set; }
+
+        [Required]
+        public int IdeaId { get; set; }
+    }
 }

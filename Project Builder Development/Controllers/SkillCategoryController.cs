@@ -142,7 +142,7 @@ namespace Project_Builder_Development.Controllers
         [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
-            return View();
+            return View(m.GetOneSkill(id));
         }
 
         // POST: SkillCategory/Delete/5
@@ -152,9 +152,9 @@ namespace Project_Builder_Development.Controllers
         {
             try
             {
-                // TODO: Add delete logic here
+                m.deleteSkill(id);
 
-                return RedirectToAction("Index");
+                return RedirectToAction("Skill");
             }
             catch
             {

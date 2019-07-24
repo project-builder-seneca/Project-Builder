@@ -1,0 +1,47 @@
+﻿@model Project_Builder_Development.Models.IdeaBaseViewModel
+
+@{
+    ViewBag.Title = "Tasks";
+}
+
+<h2>Tasks</h2>
+
+<mark>Handle the date error!</mark>
+<br /><mark>Add the edit and delete functionality</mark>
+<br /><br />
+
+@Html.ActionLink("Create Task", "../Workplace/CreateTask", new { id = Model.IdeaId})
+
+<div>
+    <table class="table">
+        <tr>
+            <th>Task Name</th>
+            <th>Description</th>
+            <th>Target Date</th>
+            <th>Skills Required</th>
+            <th>Assigned To</th>
+        </tr>
+
+        @foreach (var item in Model.Tasks)
+        {
+        <tr>
+            <td>@item.TaskName</td>
+            <td>@item.description</td>
+            <td>@item.TargetDate</td>
+            <td>
+                @foreach (var item1 in item.Skills)
+                {
+                    @item1.Name <br />
+                }
+            </td>
+            <td>
+                @foreach (var item1 in item.AssignedTo)
+                {
+                    @item1.Name <br />
+                }
+            </td>
+        </tr>
+                }
+           
+        </table>
+</div>

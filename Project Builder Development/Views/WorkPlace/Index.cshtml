@@ -1,0 +1,55 @@
+﻿@model Project_Builder_Development.Models.IdeaBaseViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Your Workplace for Idea - <mark>@Model.Title</mark></h2> 
+
+<div style="padding-top:100px;padding-left:100px">
+    <table>
+        <tr>
+            <td>
+                <h4>View Team: </h4>
+            </td>
+            <td style="padding-left:30px">
+                @Html.ActionLink("{ Team }","Team",new { id = Model.IdeaId})
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Project Plannig: </h4>
+            </td>
+            <td style="padding-left:30px">
+                Please click here
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Task: </h4>
+            </td>
+            <td style="padding-left:30px">
+                @Html.ActionLink("{ Tasks }", "Tasks", new { id = Model.IdeaId })
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Expenditure: </h4>
+            </td>
+            <td style="padding-left:30px">
+                Please click here
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <h4>Money Usage Graph: </h4>
+            </td>
+            <td style="padding-left:30px">
+                Please click here
+            </td>
+        </tr>
+    </table>
+</div>
+
+
+
