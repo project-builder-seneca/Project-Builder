@@ -3,7 +3,10 @@
 @{
     ViewBag.Title = "RequestsOnIdea";
 }
-
+<br />
+<mark>Add the delete and edit functionality</mark>
+<br />
+<br />
 <table class="table">
     <tr>
         <th>
@@ -18,22 +21,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Message)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @item.Ideas.Title
-        </td>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Message)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UserName)
+            </td>
+            <td>
+                @item.Ideas.Title
+            </td>
 
-        <td>
-            @Html.ActionLink("Details", "Details1", new { id=item.RequestId })
-        </td>
-    </tr>
-}
+            <td>
+                @Html.ActionLink("Details", "Details1", new { id = item.RequestId })
+            </td>
+        </tr>
+    }
 
 </table>

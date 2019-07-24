@@ -1,0 +1,58 @@
+﻿@model Project_Builder_Development.Models.IdeaBaseViewModel
+
+@{
+    ViewBag.Title = "Team";
+}
+
+<h2>Team for @Model.Title</h2>
+
+<div style="padding-left:50px">
+    <br />
+    <table title="Our Team" class="table">
+        <tr>
+            <td><Strong>Owner</Strong></td>
+            <td>
+                <mark>@Model.Owner</mark>
+            </td>
+        </tr>
+
+        <tr>
+            <td><Strong>Patners</Strong></td>
+            <td>
+                @foreach (var item in Model.Users)
+                {
+                    if (item.Patner == true) { 
+                        <mark>@item.Name</mark><br />
+                    }
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <td><Strong>Investors</Strong></td>
+            <td>
+                @foreach (var item in Model.Users)
+                {
+                    if (item.Investor == true)
+                    {
+                        <mark>@item.Name</mark><br />
+                    }
+                }
+            </td>
+        </tr>
+
+        <tr>
+            <td><Strong>Volunteers</Strong></td>
+            <td>
+                @foreach (var item in Model.Users)
+                {
+                    if (item.Volunteer == true)
+                    {
+                        <mark>@item.Name</mark><br />
+                    }
+                }
+            </td>
+        </tr>
+    </table>
+</div>
+

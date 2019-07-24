@@ -39,15 +39,10 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Partners Required")]
         public int PartnersRequired { get; set; }
 
-        [Display(Name = "Skills Required for Partners:")]
-        [StringLength(25, ErrorMessage = "Please Choose from the provided list!", MinimumLength = 2)]
-        public IEnumerable<SkillBaseViewModel> PatSkills { get; set; }
+        public IEnumerable<SkillBaseViewModel> Skills { get; set; }
 
         [Display(Name = "Volunteers Required")]
         public int VolunteersRequired { get; set; }
-
-        [Display(Name = "Skills required for Volunteers:")]
-        public IEnumerable<SkillBaseViewModel> VolSkills { get; set; }
 
         [Display(Name = "Reply")]
         public IEnumerable<ReplyBaseViewModel> Replies { get; set; }
@@ -58,11 +53,9 @@ namespace Project_Builder_Development.Models
         [Display(Name = "Dislike: ")]
         public int Dislike { get; set; }
 
-        public IEnumerable<UserName> PatUserNames { get; set; }
+        public IEnumerable<UserName> Users { get; set; }
 
-        public IEnumerable<UserName> VolUserNames { get; set; }
-
-        public IEnumerable<UserName> InvestUserNames { get; set; }
+        public IEnumerable<TaskGivenBaseViewModel> Tasks { get; set; }
     }
 
     public class IdeaFormViewModel : IdeaBaseViewModel{
@@ -100,5 +93,39 @@ namespace Project_Builder_Development.Models
         public bool Volunteer { get; set; }
 
         public bool Investor { get; set; }
+    }
+
+    public class TaskGivenBaseViewModel
+    { 
+        [Required]
+        [Key]
+        public int TaskId { get; set; }
+
+        [Required]
+        public string TaskName { get; set; }
+
+        public IEnumerable<UserName> AssignedTo { get; set; }
+
+        public DateTime TargetDate { get; set; }
+
+        public IEnumerable<SkillBaseViewModel> Skills { get; set; }
+
+        [Required]
+        public string description { get; set; }
+
+        [Required]
+        public int IdeaId { get; set; }
+    }
+
+    public class TaskGivenFormViewModel : TaskGivenBaseViewModel
+    {
+        public MultiSelectList UserNameList { get; set; }
+        public MultiSelectList SkillList { get; set; }
+    }
+
+    public class TaskGivenAddViewModel : TaskGivenBaseViewModel
+    {
+        public IEnumerable<int> UserNameIds { get; set; }
+        public IEnumerable<int> SkillIds { get; set; }
     }
 }

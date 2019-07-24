@@ -4,14 +4,17 @@ using System.Linq;
 using AutoMapper;
 using System.Web;
 using Project_Builder_Development.Models;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 
 namespace Project_Builder_Development.Controllers
 {
     public class Manager
     {
-        public int RoleId = 0;
+        public int RoleId = 1;
         public int ReactId = 1;
+        public int UserID = 1;
+        public int TaskId = 1;
         // Reference to the data context
         private ApplicationDbContext ds = new ApplicationDbContext();
         private ApplicationDbContext ds1 = new ApplicationDbContext();
@@ -62,6 +65,11 @@ namespace Project_Builder_Development.Controllers
                 cfg.CreateMap<Request, RequestBaseViewModel>();
                 cfg.CreateMap<RequestBaseViewModel, Request>();
 
+                //Tasks
+                cfg.CreateMap<TaskGiven,TaskGivenBaseViewModel>();
+                cfg.CreateMap<TaskGivenFormViewModel, TaskGivenAddViewModel>();
+                cfg.CreateMap<TaskGivenAddViewModel, TaskGiven>();
+
             });
 
             mapper = config.CreateMapper();
@@ -80,7 +88,7 @@ namespace Project_Builder_Development.Controllers
         public IEnumerable<IdeaBaseViewModel> GetAllProject(string id)
         {
             //var obj = ds.Ideas.Where(i => id == i.Owner);
-            var obj = ds.Ideas.Include("PatUserNames").Include("VolUserNames").Include("InvestUserNames").Where(i => id == i.Owner);
+            var obj = ds.Ideas.Include("Users").Where(i => id == i.Owner);
             return mapper.Map<IEnumerable<Idea>, IEnumerable<IdeaBaseViewModel>>(obj.ToList());
         }
 
@@ -95,24 +103,44 @@ namespace Project_Builder_Development.Controllers
 
         public IdeaBaseViewModel GetOneIdea(int? id)
         {
-            var obj = ds.Ideas.Include("VolSkills").Include("PatSkills").Include("PatUserNames").Include("VolUserNames").Include("InvestUserNames").Include("Category").Include("Replies").Include("Replies.ReplyReplies").SingleOrDefault(i => id == i.IdeaId);
+            var obj = ds.Ideas.Include("Skills").Include("Users").Include("Category").Include("Replies").Include("Replies.ReplyReplies").Include("Tasks").Include("Tasks.Skills").Include("Tasks.AssignedTo").SingleOrDefault(i => id == i.IdeaId);
             return obj == null ? null : mapper.Map<Idea, IdeaBaseViewModel>(obj);
         }
 
         public IdeaBaseViewModel AddIdea(IdeaAddViewModel newIdea)
         {
             var category = ds.Categories.Find(newIdea.CategoryId);
-
+            var skill = new Skill();
             var addedIdea = ds.Ideas.Add(mapper.Map<IdeaAddViewModel,Idea>(newIdea));
+            var idCheck = false;
+            var id1Check = false;
 
             foreach (var id in newIdea.PatSkillIds) {
-                var skill = ds.Skills.Find(id);
-                addedIdea.PatSkills.Add(skill);
-            }
-
-            foreach (var id in newIdea.VolSkillIds) {
-                var skill = ds.Skills.Find(id);
-                addedIdea.VolSkills.Add(skill);
+                foreach (var id1 in newIdea.VolSkillIds) {
+                    if (id == id1) {
+                        skill = ds.Skills.Find(id);
+                        skill.Patner = true;
+                        skill.Volunteer = true;
+                        addedIdea.Skills.Add(skill);
+                        skill.Ideas.Add(addedIdea);
+                        idCheck = true;
+                        id1Check = true;
+                    }
+                    if (id1Check == false) {
+                        skill = ds.Skills.Find(id1);
+                        skill.Volunteer = true;
+                        addedIdea.Skills.Add(skill);
+                        skill.Ideas.Add(addedIdea);
+                    }
+                    id1Check = false;
+                }
+                if (idCheck == false) {
+                    skill = ds.Skills.Find(id);
+                    skill.Patner = true;
+                    addedIdea.Skills.Add(skill);
+                    skill.Ideas.Add(addedIdea);
+                }
+                idCheck = false;
             }
 
             addedIdea.Category = category;
@@ -233,6 +261,7 @@ namespace Project_Builder_Development.Controllers
 
             if (ds.UserNames.SingleOrDefault(e => newUser.Name == e.Name) == null)
             {
+                user.UserId = UserID++;
                 user = ds.UserNames.Add(newUser);
                 ds.SaveChanges();
                 return user == null ? null : user;
@@ -243,22 +272,63 @@ namespace Project_Builder_Development.Controllers
             }
         }
 
+        public UserName GetOneUser(int id) {
+            var obj = ds.UserNames.Find(id);
+            return obj == null ? null : obj;
+        }
+
         // Add a Patner, Vol, Invest in IDea
 
         public void AddUserIdea(RequestBaseViewModel r, UserName u) {
             var idea = ds.Ideas.Find(r.IdeaId);
             if (r.Patner == true) {
-                idea.PatUserNames.Add(u);
+                u.Patner = true;
             }
             if (r.Volunteer == true) {
-                idea.VolUserNames.Add(u);
+                u.Volunteer = true;
             }
             if (r.Investor == true) {
-                idea.InvestUserNames.Add(u);
+                u.Investor = true;
             }
+
+            idea.Users.Add(u);
+            u.Ideas.Add(idea);
+
             ds.SaveChanges();
 
             deleteRequest(r.RequestId);
+        }
+
+        // Add a Task
+
+        public TaskGivenBaseViewModel AddTask(TaskGivenAddViewModel newTask) {
+
+            var addedTask = ds.TasksGiven.Add(mapper.Map<TaskGivenAddViewModel,TaskGiven>(newTask));
+
+            foreach (var id in newTask.SkillIds) {
+                var obj = ds.Skills.Find(id);
+                addedTask.Skills.Add(obj);
+                obj.TasksGiven.Add(addedTask);
+            }
+
+            foreach (var id in newTask.UserNameIds)
+            {
+                var obj = ds.UserNames.SingleOrDefault(e => id == e.UserId);
+                addedTask.AssignedTo.Add(obj);
+                obj.TasksGiven.Add(addedTask);
+            }
+
+            addedTask.TaskId = TaskId++;
+            ds.SaveChanges();
+
+            var idea = ds.Ideas.Find(addedTask.IdeaId);
+            idea.Tasks.Add(addedTask);
+
+            ds.SaveChanges();
+
+            
+
+            return addedTask == null ? null : mapper.Map<TaskGiven, TaskGivenBaseViewModel>(addedTask);
         }
 
         // Category Functions
@@ -299,6 +369,25 @@ namespace Project_Builder_Development.Controllers
             ds.SaveChanges();
 
             return addedSkill == null ? null : mapper.Map<Skill, SkillBaseViewModel>(addedSkill);
+        }
+
+        public bool deleteSkill(int id)
+        {
+
+            var deleteItem = ds.Skills.Find(id);
+
+            if (deleteItem == null)
+            {
+                return false;
+            }
+            else
+            {
+                ds.Skills.Remove(deleteItem);
+
+                ds.SaveChanges();
+
+                return true;
+            }
         }
 
         // Get RoleClaims to string
