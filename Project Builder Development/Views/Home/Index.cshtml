@@ -6,8 +6,10 @@
         display: flex;
         top: 200px;
         height: 300px;
+        max-width: 1200px;
         position: absolute;
         width: auto;
+        flex-wrap: wrap;
     }
 
     .title p {
@@ -23,9 +25,9 @@
         width: 200px;
     }
 
-    .rows p {
-        margin-right: 10px;
-    }
+        .rows p {
+            margin-right: 10px;
+        }
 
     .images {
         height: 100px;
@@ -113,8 +115,7 @@
     }
 
     function ideasTemplate(data) {
-        let rc = "";
-        let check = 1;
+        let rc = ""
         for (i in data) {
             rc +=
                 "<div class='rows'>" +

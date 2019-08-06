@@ -1,16 +1,58 @@
 ﻿@using Microsoft.AspNet.Identity
+<link href="https://use.fontawesome.com/releases/v5.0.7/css/all.css" rel="stylesheet">
+<style>
+    .dropdown-list {
+        padding-top: 15px;
+        padding-bottom: 15px;
+        color: #9d9d9d;
+        position: relative;
+        width: 130px;
+    }
+
+        .dropdown-list:hover {
+            color: #fff;
+            cursor: pointer;
+        }
+
+    .navbar-right {
+        float: right !important;
+        margin-right: -80px;
+    }
+
+    #dropdown-list-item {
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        display: none;
+        z-index: 1;
+        color: white;
+        background-color: #222;
+        border-bottom-left-radius: 7px;
+        border-bottom-right-radius: 7px;
+        padding-left: 15px;
+        list-style-type: decimal;
+    }
+</style>
+@using Microsoft.AspNet.Identity
 @if (Request.IsAuthenticated)
 {
     using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
     {
-    @Html.AntiForgeryToken()
+        @Html.AntiForgeryToken()
 
-    <ul class="nav navbar-nav navbar-right">
-        <li>
-            @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
-        </li>
-        <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
-    </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li id="dropdown-action" onclick="dropdownList()">
+                <div class="dropdown-list">
+                    <i class="far fa-user"></i>
+                    @User.Identity.GetUserName()
+                </div>
+                <ul id="dropdown-list-item">
+                    <li> @Html.ActionLink("Manage", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })</li>
+                    <li><a href="" onclick="alertFunction()">BookMarks</a></li>
+                    <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                </ul>
+            </li>
+        </ul>
     }
 }
 else
@@ -20,3 +62,21 @@ else
         <li>@Html.ActionLink("Log in", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
     </ul>
 }
+<script type="text/javascript">
+    function dropdownList() {
+        let dropdownListRef = document.getElementById("dropdown-list-item");
+        let dropdownActionRef = document.getElementById("dropdown-action");
+
+        if (dropdownListRef.style.display == 'block') {
+            dropdownActionRef.style.backgroundColor = '#222';
+            dropdownListRef.style.display = 'none';
+        } else {
+            dropdownActionRef.style.backgroundColor = '#222';
+            dropdownListRef.style.display = 'block';
+        }
+    }
+
+    function alertFunction() {
+        alert("Bookmark page is not ready!");
+    }
+</script>
