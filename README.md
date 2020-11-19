@@ -1,2 +1,2 @@
 # Project-Builder
-Live code on Azure
+Not supported by Azure anymore (free trial is over)
